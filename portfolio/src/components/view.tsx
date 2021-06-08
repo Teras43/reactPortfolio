@@ -4,16 +4,19 @@ import { Header } from "./";
 
 /** Types */
 type Props = {
+  /** Header displayed at top of page. */
   headerText?: string;
+  /** Centers content in view. */
+  center?: boolean;
   children?: ReactNode;
 };
 
 /** Base view component. */
-const View = ({ headerText, children }: Props) => {
+const View = ({ headerText, center, children }: Props) => {
   return (
     <ViewStyle>
       {headerText && <Header text={headerText} />}
-      <BodyStyle>{children}</BodyStyle>
+      <BodyStyle {...center}>{children}</BodyStyle>
     </ViewStyle>
   );
 };
@@ -26,12 +29,16 @@ const ViewStyle = styled.div`
   flex-direction: column;
 `;
 
-const BodyStyle = styled.div`
+const BodyStyle = styled.div<{ center?: boolean }>`
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   padding-top: 8px;
+  align-items: ${({ center }) => {
+    if (center === undefined) center = true;
+    return center ? "center" : undefined;
+  }};
 `;
 
 /** Exports */

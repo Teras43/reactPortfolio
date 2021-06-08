@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { NavBar } from "./components";
-import { HomePage } from "./views";
 
 const App = () => {
   return (
