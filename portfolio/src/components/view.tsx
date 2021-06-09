@@ -29,17 +29,18 @@ const ViewStyle = styled.div`
   flex-direction: column;
 `;
 
-const BodyStyle = styled.div<{ center?: boolean }>`
+const BodyStyle = styled.div`
+  /* <{ center?: boolean }> */
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   padding-top: 8px;
-  align-items: ${({ center }) => {
+`;
+/* align-items: ${({ center }) => {
     if (center === undefined) center = true;
     return center ? "center" : undefined;
-  }};
-`;
+  }}; */
 
 /** Exports */
 export default View;

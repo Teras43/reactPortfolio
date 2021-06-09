@@ -13,25 +13,42 @@ const Resume = () => {
 
   return (
     <View headerText="Resume">
-      <BorderDiv>
-        <Document file={myResume} onLoadSuccess={console.log}>
-          <Page pageNumber={1} width={pdfWidth} />
-        </Document>
-        <Document file={myResume} onLoadSuccess={console.log}>
-          <Page pageNumber={2} width={pdfWidth} />
-        </Document>
-      </BorderDiv>
+      <ResumeDiv>
+        <BorderDiv>
+          <Document
+            file={myResume}
+            onLoadSuccess={console.log}
+            externalLinkTarget="_blank"
+          >
+            <Page pageNumber={1} width={pdfWidth} />
+          </Document>
+          <Document
+            file={myResume}
+            onLoadSuccess={console.log}
+            externalLinkTarget="_blank"
+          >
+            <Page pageNumber={2} width={pdfWidth} />
+          </Document>
+        </BorderDiv>
+      </ResumeDiv>
     </View>
   );
 };
 
 /** Styles */
+const ResumeDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  margin: auto;
+`;
+
 const BorderDiv = styled.div`
   border: 1px solid black;
   height: auto;
-  width: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
 `;
 
 /** Exports */

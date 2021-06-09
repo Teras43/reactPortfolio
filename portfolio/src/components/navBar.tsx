@@ -2,6 +2,13 @@ import React, { ReactNode, useCallback, useState } from "react";
 import styled from "styled-components";
 import * as Views from "../views";
 
+/** Types */
+type NavBarItemProps = {
+  viewName: string;
+  onRouteSelect: (viewName: string) => void;
+  isSelected: boolean;
+};
+
 /** Controls displaying of the views and navigation. */
 const NavBar = () => {
   const ViewType = Views as Record<string, () => ReactNode>;
@@ -26,13 +33,6 @@ const NavBar = () => {
       {ViewType[currentRoute]?.()}
     </PageWrapper>
   );
-};
-
-/** Types */
-type NavBarItemProps = {
-  viewName: string;
-  onRouteSelect: (viewName: string) => void;
-  isSelected: boolean;
 };
 
 const NavBarItem = ({
