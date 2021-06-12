@@ -41,7 +41,7 @@ const NavBarItem = ({
   isSelected,
 }: NavBarItemProps) => {
   const formatRouteName = useCallback(
-    () => viewName.replace(/((?<=[a-z])[A-Z]|[A-Z](?=[a-z]))/g, " $1"),
+    () => viewName.replace(/([A-Z]+)/g, " $1"),
     [viewName]
   );
 
@@ -82,6 +82,29 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean }>`
   padding-right: 18px;
   border-bottom: ${({ isSelected }) =>
     isSelected ? "1px solid black" : "none"};
+  margin-bottom: ${({ isSelected }) => (isSelected ? "8px" : "0")};
+  @keyframes Bounce {
+    50% {
+      margin-bottom: 15px;
+    }
+    75% {
+      margin-top: 10px;
+    }
+  }
+  animation: Bounce 1s infinite;
+  animation-play-state: paused;
+  transform: rotate(0deg);
+  @keyframes Reset {
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  &:not(:hover) {
+    animation: Reset 0.5s 1;
+  }
+  &:hover {
+    animation-play-state: running;
+  }
 `;
 
 /** Exports */

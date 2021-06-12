@@ -2,57 +2,43 @@ import React from "react";
 import styled from "styled-components";
 import { Text } from "../components";
 
-/** Array with Objects of project data for each project in the cards. */
-const projects = [
-  {
-    title: "Angular MovieDB",
-    description:
-      "Best viewed on mobile! Uses Angular 11 and The Movie Database API to create a site you can rate and review movies you see!",
-    image: "../assets/images/angularMovieDBImg.png",
-  },
-  {
-    title: "React E-Commerce Store",
-    description:
-      "Best viewed on mobile! Uses React.js and a mock API to create a site you can browse items and add them to your cart to buy.",
-    image: "../assets/images/reactECommerceStoreImg.png",
-  },
-  {
-    title: "Angular Golf Scorecard",
-    description:
-      "Best viewed on mobile! Uses Angular 11 to select a golf course, add players to your golf game and keep track of all the scores for each person.",
-    image: "../assets/images/angularGolfScorecardImg.png",
-  },
-  {
-    title: "JavaScript Hangman",
-    description:
-      "Best viewed on desktop! A simple JavaScript game that lets you play a game of hangman from a predetermined set of words.",
-    image: "../assets/images/javaScriptHangManImg.png",
-  },
-];
-
 /** Types */
 type Props = {
+  /** Key used for each project card. */
+  key: number;
   /** Title of the project in the card. */
   title: string;
   /** Small description of project in card. */
   description: string;
   /** Thumbnail image for project in card. */
   image: string;
+  /** Website the project is hosted at. */
+  site: string;
 };
 
-/** Card component each project is displayed inside. */
-const Card = ({ title, description, image }: Props) => {
+/** Card component that each project will displayed inside. */
+const Card = ({ key, title, description, image, site }: Props) => {
+  const navSite = (site: any) => {
+    window.open(site);
+  };
+
   return (
-    <CardDiv>
-      <ImageDiv>
-        <ProjectImg></ProjectImg>
-      </ImageDiv>
+    <CardDiv key={key}>
+      <BackgroundDiv onClick={() => navSite(site)}>
+        <ImageDiv>
+          <ProjectImg src={image} alt="Thumbnail for Project"></ProjectImg>
+        </ImageDiv>
+      </BackgroundDiv>
       <TextDiv>
         <TitleDiv>
-          <Text></Text>
+          <Text fontSize={18} bold link mask={title}>
+            {site}
+          </Text>
         </TitleDiv>
         <DescriptionDiv>
-          <Text></Text>
+          <Text fontSize={16} link underline={false} mask={description}>
+            {site}
+          </Text>
         </DescriptionDiv>
       </TextDiv>
     </CardDiv>
@@ -60,15 +46,50 @@ const Card = ({ title, description, image }: Props) => {
 };
 
 /** Styles */
-const CardDiv = styled.div``;
+const CardDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 300px;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+`;
 
-const ImageDiv = styled.div``;
+const BackgroundDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+`;
 
-const ProjectImg = styled.img``;
+const ImageDiv = styled.div`
+  width: 150px;
+  height: 300px;
+  object-fit: contain;
+`;
 
-const TextDiv = styled.div``;
+const ProjectImg = styled.img`
+  height: 100%;
+  width: 100%;
+`;
 
-const TitleDiv = styled.div``;
+const TextDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  margin: auto;
+`;
+
+const TitleDiv = styled.div`
+  margin-top: 10px;
+  margin-bottom: 6px;
+`;
 
 const DescriptionDiv = styled.div``;
 

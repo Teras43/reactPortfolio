@@ -17,6 +17,8 @@ type Props = {
   /** Flags the text as a link (of a certain type if chosen, will use a generic if not),
    * and will be rendered as an <a> tag instead. Default: false */
   link?: boolean | "email" | "telephone" | "textMessage";
+  /** Tells the component whether to display an underline on the link (if set). Default: true */
+  underline?: boolean;
   /** Masks a link with different text. Ignored if the text is not a link. */
   mask?: string;
   /** Indicates whether to open a link in a new tab or not. Default: true */
@@ -32,6 +34,7 @@ const Text = ({
   color = "black",
   fontSize = 14,
   link = false,
+  underline = true,
   mask,
   newTab = true,
   children,
@@ -58,6 +61,7 @@ const Text = ({
           : (children as string)
       }
       target={newTab ? "_blank" : undefined}
+      underline={underline}
       align={align}
       bold={bold}
       italic={italic}
@@ -82,6 +86,7 @@ const TextRenderer = styled.div<Omit<Props, "children" | "link">>`
 const LinkRenderer = styled.a<Omit<Props, "children" | "link">>`
   background-color: transparent;
   display: flex;
+  text-decoration: ${({ underline }) => (underline ? "underline" : "none")};
   text-align: ${({ align }) => align};
   font-weight: ${({ bold }) => (bold ? "bold" : 400)};
   font-style: ${({ italic }) => (italic ? "italic" : "none")};
