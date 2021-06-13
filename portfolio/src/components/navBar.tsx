@@ -78,7 +78,6 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean }>`
   padding-left: 18px;
   user-select: none;
   cursor: pointer;
-  border-right: 1px solid black;
   padding-right: 18px;
   border-bottom: ${({ isSelected }) =>
     isSelected ? "1px solid black" : "none"};

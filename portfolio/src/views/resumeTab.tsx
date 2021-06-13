@@ -41,6 +41,16 @@ const ResumeDiv = styled.div`
   flex-direction: column;
   width: 50vw;
   margin: auto;
+  box-sizing: border-box;
+  @keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  animation: FadeIn 1s linear;
 `;
 
 const BorderDiv = styled.div`

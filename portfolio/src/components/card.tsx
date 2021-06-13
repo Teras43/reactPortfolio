@@ -4,8 +4,6 @@ import { Text } from "../components";
 
 /** Types */
 type Props = {
-  /** Key used for each project card. */
-  key: number;
   /** Title of the project in the card. */
   title: string;
   /** Small description of project in card. */
@@ -14,18 +12,20 @@ type Props = {
   image: string;
   /** Website the project is hosted at. */
   site: string;
+  /** Will size thumbnail image to mobile or desktop size. */
+  mobile?: boolean;
 };
 
 /** Card component that each project will displayed inside. */
-const Card = ({ key, title, description, image, site }: Props) => {
+const Card = ({ title, description, image, site, mobile = true }: Props) => {
   const navSite = (site: any) => {
     window.open(site);
   };
 
   return (
-    <CardDiv key={key}>
+    <CardDiv>
       <BackgroundDiv onClick={() => navSite(site)}>
-        <ImageDiv>
+        <ImageDiv mobile={mobile}>
           <ProjectImg src={image} alt="Thumbnail for Project"></ProjectImg>
         </ImageDiv>
       </BackgroundDiv>
@@ -66,8 +66,8 @@ const BackgroundDiv = styled.div`
   align-items: center;
 `;
 
-const ImageDiv = styled.div`
-  width: 150px;
+const ImageDiv = styled.div<{ mobile: boolean }>`
+  width: ${({ mobile }) => (mobile ? "150px" : "100%")};
   height: 300px;
   object-fit: contain;
 `;
