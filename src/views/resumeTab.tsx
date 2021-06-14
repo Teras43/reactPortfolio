@@ -1,7 +1,7 @@
 import React from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { View } from "../components";
-import myResume1 from "../assets/pdf/myResume.pdf";
+import myResume from "../assets/pdf/myResume.pdf";
 import styled from "styled-components";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -16,14 +16,14 @@ const Resume = () => {
       <ResumeDiv>
         <BorderDiv>
           <Document
-            file={myResume1}
+            file={myResume}
             onLoadSuccess={console.log}
             externalLinkTarget="_blank"
           >
             <Page pageNumber={1} width={pdfWidth} />
           </Document>
           <Document
-            file={myResume1}
+            file={myResume}
             onLoadSuccess={console.log}
             externalLinkTarget="_blank"
           >
