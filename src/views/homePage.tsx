@@ -103,10 +103,39 @@ const ContactDiv = styled.div`
   flex-direction: column;
   padding-left: 30px;
   padding-top: 20px;
+  opacity: 0;
+  @keyframes slideContactDown {
+    0% {
+      margin-top: 0px;
+    }
+    100% {
+      opacity: 1;
+      margin-top: 100px;
+    }
+  }
+  animation: 1s linear 2s 1 forwards slideContactDown;
 `;
 
 const ProjectDiv = styled.div`
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+  height: 0px;
+  width: 80em;
+  margin: auto;
+  opacity: 0;
+  overflow: hidden;
+  @keyframes slideProjectsDown {
+    0% {
+      height: 0px;
+    }
+    100% {
+      opacity: 1;
+      height: 52em;
+    }
+  }
+  animation: 1s linear 3s forwards slideProjectsDown;
 `;
 
 /** Exports */

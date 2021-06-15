@@ -39,8 +39,10 @@ const Resume = () => {
 const ResumeDiv = styled.div`
   display: flex;
   flex-direction: column;
+  height: 40em;
   width: 50vw;
   margin: auto;
+  margin-top: 105px;
   box-sizing: border-box;
   @keyframes FadeIn {
     0% {
@@ -55,7 +57,6 @@ const ResumeDiv = styled.div`
 
 const BorderDiv = styled.div`
   border: 1px solid black;
-  height: auto;
   width: 100%;
   margin-top: 25px;
   margin-bottom: 25px;

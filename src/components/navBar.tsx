@@ -64,6 +64,7 @@ const PageWrapper = styled.div`
 const NavBarStyle = styled.div`
   width: 100vw;
   height: 55px;
+  position: fixed;
   font-size: 22px;
   background-color: #e4e4e4;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -71,6 +72,15 @@ const NavBarStyle = styled.div`
   justify-content: flex-start;
   align-items: center;
   z-index: 2;
+  @keyframes Slide {
+    0% {
+      transform: translateX(-50em);
+    }
+    100% {
+      transform: translateX(0em);
+    }
+  }
+  animation: 1s ease-out 0s 1 Slide;
 `;
 
 const NavBarItemStyle = styled.div<{ isSelected: boolean }>`
