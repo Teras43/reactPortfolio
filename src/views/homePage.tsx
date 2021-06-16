@@ -101,6 +101,7 @@ const AnimationDiv = styled.div`
 const ContactDiv = styled.div`
   display: flex;
   flex-direction: column;
+  width: 10em;
   padding-left: 30px;
   padding-top: 20px;
   opacity: 0;
@@ -113,7 +114,7 @@ const ContactDiv = styled.div`
       margin-top: 100px;
     }
   }
-  animation: 1s linear 2s 1 forwards slideContactDown;
+  animation: 1s linear 1s 1 forwards slideContactDown;
 `;
 
 const ProjectDiv = styled.div`
@@ -135,7 +136,7 @@ const ProjectDiv = styled.div`
       height: 52em;
     }
   }
-  animation: 1s linear 3s forwards slideProjectsDown;
+  animation: 1s linear 1s 1 forwards slideProjectsDown;
 `;
 
 /** Exports */
