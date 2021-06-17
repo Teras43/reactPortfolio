@@ -73,8 +73,8 @@ const BackgroundDiv = styled.div`
 `;
 
 const ImageDiv = styled.div<{ mobile: boolean }>`
-  /* width: ${({ mobile }) => (mobile ? "100px" : "100%")}; */
-  width: 33%;
+  width: ${({ mobile }) => (mobile ? "33%" : "100%")};
+  /* width: 33%; */
   height: 200px;
   object-fit: contain;
   @media (min-width: 410px) {
