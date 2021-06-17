@@ -61,7 +61,7 @@ const HomePage = () => {
 
   return (
     <View headerText="Projects">
-      <AnimationDiv>
+      <BodyWrapper>
         <ContactDiv>
           <Text fontSize={24} italic>
             Brandon Curtis
@@ -80,13 +80,18 @@ const HomePage = () => {
           </Text>
         </ContactDiv>
         <ProjectDiv>{allProjects}</ProjectDiv>
-      </AnimationDiv>
+      </BodyWrapper>
     </View>
   );
 };
 
 /** Styles */
-const AnimationDiv = styled.div`
+const BodyWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
   @keyframes FadeIn {
     0% {
       opacity: 0;
@@ -101,10 +106,16 @@ const AnimationDiv = styled.div`
 const ContactDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 10em;
-  padding-left: 30px;
+  width: 100%;
+  align-items: center;
   padding-top: 20px;
   opacity: 0;
+
+  @media (min-width: 860px) {
+    align-items: flex-start;
+    padding-left: 30px;
+  }
+
   @keyframes slideContactDown {
     0% {
       margin-top: 0px;
@@ -114,7 +125,7 @@ const ContactDiv = styled.div`
       margin-top: 100px;
     }
   }
-  animation: 1s linear 1s 1 forwards slideContactDown;
+  animation: 1s linear 0s 1 forwards slideContactDown;
 `;
 
 const ProjectDiv = styled.div`
@@ -122,21 +133,20 @@ const ProjectDiv = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   padding-bottom: 30px;
-  height: 0px;
-  width: 80em;
+  height: 100%;
+  width: 100%;
+  max-width: 1285px;
   margin: auto;
   opacity: 0;
-  overflow: hidden;
   @keyframes slideProjectsDown {
     0% {
-      height: 0px;
+      opacity: 0;
     }
     100% {
       opacity: 1;
-      height: 52em;
     }
   }
-  animation: 1s linear 1s 1 forwards slideProjectsDown;
+  animation: 1s linear 1.2s 1 forwards slideProjectsDown;
 `;
 
 /** Exports */

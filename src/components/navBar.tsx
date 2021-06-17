@@ -59,6 +59,8 @@ const NavBarItem = ({
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const NavBarStyle = styled.div`
@@ -72,7 +74,7 @@ const NavBarStyle = styled.div`
   justify-content: flex-start;
   align-items: center;
   z-index: 2;
-  @keyframes Slide {
+  /* @keyframes Slide {
     0% {
       transform: translateX(-50em);
     }
@@ -80,7 +82,7 @@ const NavBarStyle = styled.div`
       transform: translateX(0em);
     }
   }
-  animation: 1s ease-out 0s 1 Slide;
+  animation: 1s ease-out 0s 1 Slide; */
 `;
 
 const NavBarItemStyle = styled.div<{ isSelected: boolean }>`

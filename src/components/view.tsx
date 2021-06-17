@@ -23,15 +23,15 @@ const View = ({ headerText, center, children }: Props) => {
 
 /** Styles */
 const ViewStyle = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
 const BodyStyle = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 8px;

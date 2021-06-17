@@ -11,7 +11,7 @@ const Header = ({ text }: Props) => <HeaderStyle>{text}</HeaderStyle>;
 
 /** Styles */
 const HeaderStyle = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 55px;
   position: fixed;
   font-size: 22px;
@@ -19,6 +19,7 @@ const HeaderStyle = styled.div`
   box-shadow: 0px 4px 21px 0px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -33,7 +34,7 @@ const HeaderStyle = styled.div`
       padding: 20px;
     }
   }
-  animation: 1s linear 1s 1 forwards slideDown;
+  animation: 1s linear 0s 1 forwards slideDown;
 `;
 
 /** Exports */

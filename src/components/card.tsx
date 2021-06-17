@@ -49,27 +49,37 @@ const Card = ({ title, description, image, site, mobile = true }: Props) => {
 const CardDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
   margin-right: 15px;
   margin-left: 15px;
   margin-top: 15px;
+  margin-bottom: 150px;
   cursor: pointer;
 `;
 
 const BackgroundDiv = styled.div`
   width: 100%;
-  height: 100%;
+  height: 200px;
   display: flex;
   background-color: black;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 410px) {
+    height: 250px;
+  }
 `;
 
 const ImageDiv = styled.div<{ mobile: boolean }>`
-  width: ${({ mobile }) => (mobile ? "150px" : "100%")};
-  height: 300px;
+  /* width: ${({ mobile }) => (mobile ? "100px" : "100%")}; */
+  width: 33%;
+  height: 200px;
   object-fit: contain;
+  @media (min-width: 410px) {
+    height: 250px;
+  }
 `;
 
 const ProjectImg = styled.img`
