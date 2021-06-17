@@ -56,12 +56,10 @@ const ResumeDiv = styled.div`
 `;
 
 const BorderDiv = styled.div`
-  @media (min-width: 415px) {
-    border: 1px solid black;
-    width: 100%;
-    margin-top: 25px;
-    margin-bottom: 25px;
-  }
+  border: 1px solid black;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
 `;
 
 /** Exports */
