@@ -31,12 +31,18 @@ const Card = ({ title, description, image, site, mobile = true }: Props) => {
       </BackgroundDiv>
       <TextDiv>
         <TitleDiv>
-          <Text fontSize={18} bold link mask={title}>
+          <Text fontSize={18} bold link mask={title} color={"white"}>
             {site}
           </Text>
         </TitleDiv>
         <DescriptionDiv>
-          <Text fontSize={16} link underline={false} mask={description}>
+          <Text
+            fontSize={16}
+            link
+            underline={false}
+            mask={description}
+            color={"white"}
+          >
             {site}
           </Text>
         </DescriptionDiv>

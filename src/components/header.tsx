@@ -15,7 +15,7 @@ const HeaderStyle = styled.div`
   height: 55px;
   position: fixed;
   font-size: 22px;
-  background-color: #e4e4e4;
+  background-color: #e1e5ee;
   box-shadow: 0px 4px 21px 0px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   display: flex;

@@ -61,6 +61,7 @@ const PageWrapper = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  background-color: #767b91;
 `;
 
 const NavBarStyle = styled.div`
@@ -68,7 +69,7 @@ const NavBarStyle = styled.div`
   height: 55px;
   position: fixed;
   font-size: 22px;
-  background-color: #e4e4e4;
+  background-color: #c7ccdb;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: flex-start;

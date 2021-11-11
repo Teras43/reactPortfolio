@@ -63,19 +63,19 @@ const HomePage = () => {
     <View headerText="Projects">
       <BodyWrapper>
         <ContactDiv>
-          <Text fontSize={24} italic>
+          <Text fontSize={24} italic color={"white"}>
             Brandon Curtis
           </Text>
           <Text
             fontSize={19}
             italic
-            color="black"
+            color={"white"}
             link="email"
             mask="Email Me!"
           >
             Brandcurtis43@gmail.com
           </Text>
-          <Text fontSize={16} italic color="black" link mask="My Github">
+          <Text fontSize={16} italic color={"white"} link mask="My Github">
             https://github.com/Teras43
           </Text>
         </ContactDiv>
