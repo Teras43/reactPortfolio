@@ -11,7 +11,7 @@ const Header = ({ text }: Props) => <HeaderStyle>{text}</HeaderStyle>;
 
 /** Styles */
 const HeaderStyle = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 55px;
   position: fixed;
   font-size: 22px;

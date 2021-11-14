@@ -106,7 +106,6 @@ const BodyWrapper = styled.div`
 const ContactDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
   padding-top: 20px;
   opacity: 0;

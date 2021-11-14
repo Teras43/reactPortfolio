@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 import styled from "styled-components";
 import * as Views from "../views";
 
@@ -65,7 +65,7 @@ const PageWrapper = styled.div`
 `;
 
 const NavBarStyle = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 55px;
   position: fixed;
   font-size: 22px;
