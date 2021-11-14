@@ -131,7 +131,7 @@ const ProjectDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding-bottom: 30px;
+  padding-bottom: 100px;
   height: 100%;
   width: 100%;
   max-width: 1285px;
