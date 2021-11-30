@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-/** Types */
+/** Text Component Types */
 
 type Props = {
   /** Whether to justify the text to the center, left, right, top or bottom. Default: left */
@@ -23,10 +23,11 @@ type Props = {
   mask?: string;
   /** Indicates whether to open a link in a new tab or not. Default: true */
   newTab?: boolean;
+  /** Typing for the node which holds the children (if any). */
   children?: ReactNode;
 };
 
-/** A malleable component for rendering text. */
+/** A versatile component for rendering text using different props to achieve different effects. Effects are displayed in the types above. */
 const Text = ({
   align = "left",
   bold = false,
@@ -72,7 +73,7 @@ const Text = ({
     </LinkRenderer>
   );
 
-/** Styles */
+/** Text Component Styles */
 
 const TextRenderer = styled.div<Omit<Props, "children" | "link">>`
   background-color: transparent;
@@ -94,6 +95,6 @@ const LinkRenderer = styled.a<Omit<Props, "children" | "link">>`
   color: ${({ color }) => color};
 `;
 
-/** Exports */
+/** Text Component Exports */
 
 export default Text;

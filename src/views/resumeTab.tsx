@@ -4,15 +4,18 @@ import { View } from "../components";
 import myResume from "../assets/pdf/CurtisBrandon_Resume_2021-11-11.pdf";
 import styled from "styled-components";
 
+/** Global worker for the PDF viewer used for the Resume. */
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-/** Basic resume view. */
+/** The view component for the resume. */
 const Resume = () => {
+  /** Width of the current viewport. */
   const screenWidth = window.innerWidth;
+  /** Width of the PDF relative to the current viewport. */
   const pdfWidth = Math.min(screenWidth - screenWidth * 0.25, 850);
 
   return (
-    <View headerText="Resume">
+    <View headerText="My resume">
       <ResumeDiv>
         <BorderDiv>
           <Document
@@ -35,14 +38,13 @@ const Resume = () => {
   );
 };
 
-/** Styles */
+/** Resume View Styles */
 const ResumeDiv = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 50;
   margin: auto;
-  margin-top: 105px;
   box-sizing: border-box;
   @keyframes FadeIn {
     0% {
@@ -56,11 +58,10 @@ const ResumeDiv = styled.div`
 `;
 
 const BorderDiv = styled.div`
-  /* border: 1px solid black; */
   width: 100%;
   margin-top: 25px;
   margin-bottom: 25px;
 `;
 
-/** Exports */
+/** Resume View Exports */
 export default Resume;

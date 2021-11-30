@@ -1,32 +1,34 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import styled from "styled-components";
 import { Header } from "./";
 
-/** Types */
+/** View Types */
 type Props = {
   /** Header displayed at top of page. */
   headerText?: string;
   /** Centers content in view. */
   center?: boolean;
+  /** Typing for the node which holds the children (the body of the page). */
   children?: ReactNode;
 };
 
-/** Base view component. */
+/** Component that wraps and displays the main body of the view, and displays the banner for which view is currently routed to. */
 const View = ({ headerText, center, children }: Props) => {
   return (
     <ViewStyle>
-      {headerText && <Header text={headerText} />}
+      <HeaderDiv>{headerText && <Header text={headerText} />}</HeaderDiv>
       <BodyStyle {...center}>{children}</BodyStyle>
     </ViewStyle>
   );
 };
 
-/** Styles */
+/** View Styles */
 const ViewStyle = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin: auto;
 `;
 
 const BodyStyle = styled.div`
@@ -34,8 +36,22 @@ const BodyStyle = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 8px;
+  margin-top: 50px;
+  z-index: 10;
+  overflow: scroll;
+  margin-bottom: 20px;
+
+  @media (min-width: 865px) {
+    margin-top: 75px;
+  }
 `;
 
-/** Exports */
+const HeaderDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  z-index: 11;
+`;
+
+/** View Exports */
 export default View;

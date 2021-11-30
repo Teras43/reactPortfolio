@@ -1,14 +1,12 @@
-import React from "react";
 import styled from "styled-components";
 import { View } from "../components";
-import { Text } from "../components";
 import { Card } from "../components";
 import movieDbImg from "../assets/images/angularMovieDBImg.png";
 import ecommerceStoreImg from "../assets/images/reactECommerceStoreImg.png";
 import golfScorecardImg from "../assets/images/angularGolfScorecardImg.jpeg";
 import hangManImg from "../assets/images/javaScriptHangManImg.png";
 
-/** Array with Objects of project data for each project in the cards. */
+/** Array of objects that holds data to be displayed in the card component. */
 const projects = [
   {
     title: "Angular MovieDB",
@@ -44,8 +42,9 @@ const projects = [
   },
 ];
 
-/** The main page of the app. */
+/** The landing page view of the app. */
 const HomePage = () => {
+  /** Variable that holds the project cards mapped to each project in the projects array. */
   const allProjects = projects.map((project, index) => {
     return (
       <Card
@@ -60,32 +59,15 @@ const HomePage = () => {
   });
 
   return (
-    <View headerText="Projects">
+    <View headerText="My work">
       <BodyWrapper>
-        <ContactDiv>
-          <Text fontSize={24} italic color={"white"}>
-            Brandon Curtis
-          </Text>
-          <Text
-            fontSize={19}
-            italic
-            color={"white"}
-            link="email"
-            mask="Email Me!"
-          >
-            Brandcurtis43@gmail.com
-          </Text>
-          <Text fontSize={16} italic color={"white"} link mask="My Github">
-            https://github.com/Teras43
-          </Text>
-        </ContactDiv>
         <ProjectDiv>{allProjects}</ProjectDiv>
       </BodyWrapper>
     </View>
   );
 };
 
-/** Styles */
+/** Home View Styles */
 const BodyWrapper = styled.div`
   height: 100%;
   width: 100%;
@@ -103,30 +85,6 @@ const BodyWrapper = styled.div`
   animation: FadeIn 1s linear;
 `;
 
-const ContactDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  opacity: 0;
-
-  @media (min-width: 860px) {
-    align-items: flex-start;
-    padding-left: 30px;
-  }
-
-  @keyframes slideContactDown {
-    0% {
-      margin-top: 0px;
-    }
-    100% {
-      opacity: 1;
-      margin-top: 100px;
-    }
-  }
-  animation: 1s linear 0s 1 forwards slideContactDown;
-`;
-
 const ProjectDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -137,7 +95,7 @@ const ProjectDiv = styled.div`
   max-width: 1285px;
   margin: auto;
   opacity: 0;
-  @keyframes slideProjectsDown {
+  @keyframes fadeIn {
     0% {
       opacity: 0;
     }
@@ -145,8 +103,11 @@ const ProjectDiv = styled.div`
       opacity: 1;
     }
   }
-  animation: 1s linear 1.2s 1 forwards slideProjectsDown;
+  animation: fadeIn 1s linear 0.2s 1 forwards;
+
+  @media (min-width: 865px) {
+  }
 `;
 
-/** Exports */
+/** Home View Exports */
 export default HomePage;
