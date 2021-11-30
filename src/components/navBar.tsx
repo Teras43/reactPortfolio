@@ -14,6 +14,7 @@ type NavBarItemProps = {
   onRouteSelect: (viewName: string) => void;
   /** The boolean passed in telling the component whether or not the current route displayed is the 'selected' route / view, or currently active route / view. */
   isSelected: boolean;
+  currentRoute: string;
 };
 
 type GenericProps = {
@@ -49,6 +50,7 @@ const NavBar = () => {
         onRouteSelect={setCurrentRoute}
         viewName={viewName}
         isSelected={currentRoute === viewName}
+        currentRoute={currentRoute}
       ></NavBarItem>
     ));
   }, [currentRoute, viewNames]);
@@ -71,6 +73,7 @@ const NavBar = () => {
 /** Navbar Item component that takes the view(route) names and changes the displayed name to be a capitalized version of the view name. It applies styling and attributes for selection and routing as well. */
 const NavBarItem = ({
   viewName,
+  currentRoute,
   onRouteSelect,
   isSelected,
 }: NavBarItemProps) => {
@@ -83,6 +86,7 @@ const NavBarItem = ({
     <NavBarItemStyle
       isSelected={isSelected}
       viewName={viewName}
+      currentRoute={currentRoute}
       onClick={() => onRouteSelect(viewName)}
     >
       {formatRouteName()}
@@ -143,7 +147,11 @@ const NavBarStyle = styled.div`
   }
 `;
 
-const NavBarItemStyle = styled.div<{ isSelected: boolean; viewName: string }>`
+const NavBarItemStyle = styled.div<{
+  isSelected: boolean;
+  viewName: string;
+  currentRoute: string;
+}>`
   margin-right: 4px;
   padding-left: 18px;
   font-size: 20px;
@@ -184,8 +192,8 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean; viewName: string }>`
   }
 
   /** Flicker in animation on site content load for the header and currently selected NavBar path. */
-  ${({ isSelected, viewName }) =>
-    isSelected && viewName === "Webapps"
+  ${({ isSelected, currentRoute }) =>
+    isSelected && currentRoute === "Webapps"
       ? `@keyframes flickerIn {
       0%,
       18%,
@@ -203,9 +211,9 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean; viewName: string }>`
         text-shadow: none;
       }
     }
-    animation: flickerIn 1s linear 1.2s 1 none;
+    animation: flickerIn 1s linear 2.5s 1 none;
     `
-      : isSelected && viewName === "Resume"
+      : isSelected && currentRoute === "Resume"
       ? `@keyframes flickerIn {
       0%,
       18%,
@@ -223,9 +231,9 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean; viewName: string }>`
         text-shadow: none;
       }
     }
-    animation: flickerIn 1s linear 1.2s 1 none;
+    animation: flickerIn 1s linear 2.5s 1 none;
     `
-      : isSelected && viewName === "Contact"
+      : isSelected && currentRoute === "Contact"
       ? `@keyframes flickerIn {
       0%,
       18%,
@@ -243,9 +251,11 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean; viewName: string }>`
         text-shadow: none;
       }
     }
-    animation: flickerIn 1s linear 1.2s 1 none;
+    animation: flickerIn 1s linear 2.5s 1 none;
     `
-      : "none"} /* Pulsating animation for each item in the navbar. */ @keyframes pulsate {
+      : "none"}
+  /* Pulsating animation for each item in the navbar. */ 
+    @keyframes pulsate {
     100% {
       /* Larger blur radius */
       text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #e6af2e,

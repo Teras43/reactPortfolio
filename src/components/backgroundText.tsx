@@ -290,6 +290,7 @@ const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
 const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
   opacity: ${({ isClicked }) => (isClicked ? 0 : 1)};
   font-family: "Bebas Neue", cursive;
+  cursor: pointer;
   width: 200px;
   height: 45px;
   background: none;
