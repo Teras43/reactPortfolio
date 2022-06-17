@@ -1,3 +1,3 @@
 export { default as Webapps } from './home';
-export { default as Resume } from './resumeTab';
+export { default as Games } from './games';
 export { default as Contact } from './contact';

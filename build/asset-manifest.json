@@ -1,18 +1,17 @@
 {
   "files": {
     "main.css": "/reactPortfolio/static/css/main.ea1455b2.chunk.css",
-    "main.js": "/reactPortfolio/static/js/main.2e3369e6.chunk.js",
-    "main.js.map": "/reactPortfolio/static/js/main.2e3369e6.chunk.js.map",
-    "runtime-main.js": "/reactPortfolio/static/js/runtime-main.7b739530.js",
-    "runtime-main.js.map": "/reactPortfolio/static/js/runtime-main.7b739530.js.map",
-    "static/js/2.dae90499.chunk.js": "/reactPortfolio/static/js/2.dae90499.chunk.js",
-    "static/js/2.dae90499.chunk.js.map": "/reactPortfolio/static/js/2.dae90499.chunk.js.map",
-    "static/js/3.604bd15c.chunk.js": "/reactPortfolio/static/js/3.604bd15c.chunk.js",
-    "static/js/3.604bd15c.chunk.js.map": "/reactPortfolio/static/js/3.604bd15c.chunk.js.map",
+    "main.js": "/reactPortfolio/static/js/main.c2f1aa01.chunk.js",
+    "main.js.map": "/reactPortfolio/static/js/main.c2f1aa01.chunk.js.map",
+    "runtime-main.js": "/reactPortfolio/static/js/runtime-main.d0506577.js",
+    "runtime-main.js.map": "/reactPortfolio/static/js/runtime-main.d0506577.js.map",
+    "static/js/2.ef98a498.chunk.js": "/reactPortfolio/static/js/2.ef98a498.chunk.js",
+    "static/js/2.ef98a498.chunk.js.map": "/reactPortfolio/static/js/2.ef98a498.chunk.js.map",
+    "static/js/3.ed3c5040.chunk.js": "/reactPortfolio/static/js/3.ed3c5040.chunk.js",
+    "static/js/3.ed3c5040.chunk.js.map": "/reactPortfolio/static/js/3.ed3c5040.chunk.js.map",
     "index.html": "/reactPortfolio/index.html",
     "static/css/main.ea1455b2.chunk.css.map": "/reactPortfolio/static/css/main.ea1455b2.chunk.css.map",
-    "static/js/2.dae90499.chunk.js.LICENSE.txt": "/reactPortfolio/static/js/2.dae90499.chunk.js.LICENSE.txt",
-    "static/media/CurtisBrandon_Resume_2021-11-11.c14d5866.pdf": "/reactPortfolio/static/media/CurtisBrandon_Resume_2021-11-11.c14d5866.pdf",
+    "static/js/2.ef98a498.chunk.js.LICENSE.txt": "/reactPortfolio/static/js/2.ef98a498.chunk.js.LICENSE.txt",
     "static/media/angularGolfScorecardImg.58424e1e.jpeg": "/reactPortfolio/static/media/angularGolfScorecardImg.58424e1e.jpeg",
     "static/media/angularMovieDBImg.c8bfe0f3.png": "/reactPortfolio/static/media/angularMovieDBImg.c8bfe0f3.png",
     "static/media/dark_blue_wall.f0369174.png": "/reactPortfolio/static/media/dark_blue_wall.f0369174.png",
@@ -21,12 +20,14 @@
     "static/media/facebook.795fce8e.png": "/reactPortfolio/static/media/facebook.795fce8e.png",
     "static/media/javaScriptHangManImg.c2e8fdc5.png": "/reactPortfolio/static/media/javaScriptHangManImg.c2e8fdc5.png",
     "static/media/linkedin.e65fd24a.png": "/reactPortfolio/static/media/linkedin.e65fd24a.png",
-    "static/media/reactECommerceStoreImg.9f7999c6.png": "/reactPortfolio/static/media/reactECommerceStoreImg.9f7999c6.png"
+    "static/media/reactECommerceStoreImg.9f7999c6.png": "/reactPortfolio/static/media/reactECommerceStoreImg.9f7999c6.png",
+    "static/media/red-swirls.ff8833ec.jpeg": "/reactPortfolio/static/media/red-swirls.ff8833ec.jpeg",
+    "static/media/wordle_thumbnail.adec7ae0.png": "/reactPortfolio/static/media/wordle_thumbnail.adec7ae0.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.7b739530.js",
-    "static/js/2.dae90499.chunk.js",
+    "static/js/runtime-main.d0506577.js",
+    "static/js/2.ef98a498.chunk.js",
     "static/css/main.ea1455b2.chunk.css",
-    "static/js/main.2e3369e6.chunk.js"
+    "static/js/main.c2f1aa01.chunk.js"
   ]
 }

@@ -39,7 +39,7 @@ const BodyStyle = styled.div`
   margin-top: 50px;
   z-index: 10;
   overflow: scroll;
-  margin-bottom: 20px;
+  overflow-x: none;
 
   @media (min-width: 865px) {
     margin-top: 75px;

@@ -36,7 +36,7 @@ const HeaderStyle = styled.div<{ text: string }>`
     text === "My work"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c`
-      : text === "My resume"
+      : text === "My games"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00`
       : text === "Lets get in touch"

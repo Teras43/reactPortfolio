@@ -110,7 +110,7 @@ const PageWrapper = styled.div<{ viewName: string }>`
   background-image: ${({ viewName }) =>
     viewName === "Webapps"
       ? `url(${wallBlueImg})`
-      : viewName === "Resume"
+      : viewName === "Games"
       ? `url(${wallYellowImg})`
       : viewName === "Contact"
       ? `url(${wallRedImg})`
@@ -161,7 +161,7 @@ const NavBarItemStyle = styled.div<{
   color: ${({ isSelected, viewName }) =>
     isSelected && viewName === "Webapps"
       ? "#FFF"
-      : isSelected && viewName === "Resume"
+      : isSelected && viewName === "Games"
       ? "#FFE7AD"
       : isSelected && viewName === "Contact"
       ? "#FFC9C2"
@@ -170,7 +170,7 @@ const NavBarItemStyle = styled.div<{
     isSelected && viewName === "Webapps"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 100px #1b356c`
-      : isSelected && viewName === "Resume"
+      : isSelected && viewName === "Games"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00`
       : isSelected && viewName === "Contact"
@@ -213,7 +213,7 @@ const NavBarItemStyle = styled.div<{
     }
     animation: flickerIn 1s linear 2.5s 1 none;
     `
-      : isSelected && currentRoute === "Resume"
+      : isSelected && currentRoute === "Games"
       ? `@keyframes flickerIn {
       0%,
       18%,

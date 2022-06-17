@@ -32,14 +32,6 @@ const projects = [
     site: "https://teras43.github.io/golf-scorecard-angular/",
     mobile: true,
   },
-  {
-    title: "JavaScript Hangman",
-    description:
-      "Best viewed on desktop! A simple JavaScript game that lets you play a game of hangman from a predetermined set of words.",
-    image: hangManImg,
-    site: "https://teras43.github.io/Hang-Man/",
-    mobile: false,
-  },
 ];
 
 /** The landing page view of the app. */
