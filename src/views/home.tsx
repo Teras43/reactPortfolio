@@ -4,7 +4,6 @@ import { Card } from "../components";
 import movieDbImg from "../assets/images/angularMovieDBImg.png";
 import ecommerceStoreImg from "../assets/images/reactECommerceStoreImg.png";
 import golfScorecardImg from "../assets/images/angularGolfScorecardImg.jpeg";
-import hangManImg from "../assets/images/javaScriptHangManImg.png";
 
 /** Array of objects that holds data to be displayed in the card component. */
 const projects = [
