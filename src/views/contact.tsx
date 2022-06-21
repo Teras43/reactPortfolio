@@ -12,10 +12,11 @@ type Props = {
 const Contact = ({ currentRoute }: Props) => {
   let socialArray = [fbImg, liImg];
   let socialLinkArray = [
-    "https://www.facebook.com/brandcurtis/",
+    // "https://www.facebook.com/brandcurtis/",
     "https://www.linkedin.com/in/brandcurtis/",
   ];
-  let socialMask = ["Facebook", "LinkedIn"];
+  // let socialMask = ["Facebook", "LinkedIn"];
+  let socialMask = ["LinkedIn"];
 
   return (
     <View headerText="Lets get in touch">
@@ -26,7 +27,7 @@ const Contact = ({ currentRoute }: Props) => {
               <ContactCardSection
                 sectionTitle={"You can email me:"}
                 sectionText={"Brandcurtis43@gmail.com"}
-                textMask={"Here's the link to it!"}
+                textMask={"Brandcurtis43@gmail.com"}
                 textLink={"email"}
               />
               <ContactCardSection
@@ -46,7 +47,7 @@ const Contact = ({ currentRoute }: Props) => {
           </BorderDiv>
         </CardDiv>
         <AttrDiv>
-          <div>
+          {/* <div>
             Facebook Icon made by{" "}
             <a
               href="https://www.flaticon.com/authors/ruslan-babkin"
@@ -58,7 +59,7 @@ const Contact = ({ currentRoute }: Props) => {
             <a href="https://www.flaticon.com/" title="Flaticon">
               www.flaticon.com
             </a>
-          </div>
+          </div> */}
           <div>
             LinkedIn Icon made by{" "}
             <a href="https://www.freepik.com" title="Freepik">

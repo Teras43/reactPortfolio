@@ -31,7 +31,7 @@ const NavBar = () => {
     ({ currentRoute }: GenericProps) => ReactNode
   >;
   /** The state for the routing used in the webapp. Initialized at "Home" route. */
-  const [currentRoute, setCurrentRoute] = useState<string>("Webapps");
+  const [currentRoute, setCurrentRoute] = useState<string>("Games");
   /** Variable that holds the object with names of each view to set up a route to. */
   const viewNames = Object.keys(Views);
 
@@ -108,9 +108,9 @@ const PageWrapper = styled.div<{ viewName: string }>`
   width: 100vw;
   height: 100vh;
   background-image: ${({ viewName }) =>
-    viewName === "Webapps"
+    viewName === "Games"
       ? `url(${wallBlueImg})`
-      : viewName === "Games"
+      : viewName === "Webapps"
       ? `url(${wallYellowImg})`
       : viewName === "Contact"
       ? `url(${wallRedImg})`
@@ -159,18 +159,18 @@ const NavBarItemStyle = styled.div<{
   cursor: pointer;
   opacity: ${({ isSelected }) => (isSelected ? "1" : "0.5")};
   color: ${({ isSelected, viewName }) =>
-    isSelected && viewName === "Webapps"
+    isSelected && viewName === "Games"
       ? "#FFF"
-      : isSelected && viewName === "Games"
+      : isSelected && viewName === "Webapps"
       ? "#FFE7AD"
       : isSelected && viewName === "Contact"
       ? "#FFC9C2"
       : "#FFF"};
   text-shadow: ${({ isSelected, viewName }) =>
-    isSelected && viewName === "Webapps"
+    isSelected && viewName === "Games"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 100px #1b356c`
-      : isSelected && viewName === "Games"
+      : isSelected && viewName === "Webapps"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00`
       : isSelected && viewName === "Contact"
@@ -193,7 +193,7 @@ const NavBarItemStyle = styled.div<{
 
   /** Flicker in animation on site content load for the header and currently selected NavBar path. */
   ${({ isSelected, currentRoute }) =>
-    isSelected && currentRoute === "Webapps"
+    isSelected && currentRoute === "Games"
       ? `@keyframes flickerIn {
       0%,
       18%,
@@ -213,7 +213,7 @@ const NavBarItemStyle = styled.div<{
     }
     animation: flickerIn 1s linear 2.5s 1 none;
     `
-      : isSelected && currentRoute === "Games"
+      : isSelected && currentRoute === "Webapps"
       ? `@keyframes flickerIn {
       0%,
       18%,
