@@ -13,10 +13,19 @@ type Props = {
   site: string;
   /** Will size thumbnail image to mobile or desktop size. */
   mobile?: boolean;
+  /** Header text for the view the card will be sitting in. */
+  headerText: string;
 };
 
 /** Component that decides the data / styling for each project. Each card representing a 'section'. */
-const Card = ({ title, description, image, site, mobile = true }: Props) => {
+const Card = ({
+  title,
+  description,
+  image,
+  site,
+  mobile = true,
+  headerText,
+}: Props) => {
   /** Variable that holds the current font sizes for the title and description. */
   let fontSizeTitle = 18;
   let fontSizeDesc = 16;
@@ -35,7 +44,7 @@ const Card = ({ title, description, image, site, mobile = true }: Props) => {
   };
 
   return (
-    <CardDiv>
+    <CardDiv headerText={headerText}>
       <BorderDiv>
         <BackgroundDiv onClick={() => navSite(site)}>
           <ImageDiv mobile={mobile}>
@@ -78,7 +87,7 @@ const Card = ({ title, description, image, site, mobile = true }: Props) => {
 };
 
 /** Card Component Styles */
-const CardDiv = styled.div`
+const CardDiv = styled.div<{ headerText: string }>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -91,8 +100,10 @@ const CardDiv = styled.div`
   cursor: pointer;
   border: 1px solid #ffffff9d;
   border-radius: 10px;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #1b356c,
-    0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;
+  box-shadow: ${({ headerText }) =>
+    headerText === "My games"
+      ? "0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #1b356c, 0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;"
+      : "0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #FBAF00, 0 0 0.8rem #FBAF00, 0 0 2.8rem #FBAF00, inset 0 0 1.3rem #FBAF00;"};
   background-color: #141414;
   align-items: center;
   justify-content: center;

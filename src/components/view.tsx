@@ -13,11 +13,11 @@ type Props = {
 };
 
 /** Component that wraps and displays the main body of the view, and displays the banner for which view is currently routed to. */
-const View = ({ headerText, center, children }: Props) => {
+const View = ({ headerText, children }: Props) => {
   return (
     <ViewStyle>
       <HeaderDiv>{headerText && <Header text={headerText} />}</HeaderDiv>
-      <BodyStyle {...center}>{children}</BodyStyle>
+      <BodyStyle>{children}</BodyStyle>
     </ViewStyle>
   );
 };

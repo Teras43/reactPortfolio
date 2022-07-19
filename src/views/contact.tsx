@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { View } from "../components";
 import { ContactCardSection } from "../components";
-import fbImg from "../assets/images/facebook.png";
+// import fbImg from "../assets/images/facebook.png";
 import liImg from "../assets/images/linkedin.png";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 
 /** The view component for the Contact page. */
 const Contact = ({ currentRoute }: Props) => {
-  let socialArray = [fbImg, liImg];
+  let socialArray = [liImg];
   let socialLinkArray = [
     // "https://www.facebook.com/brandcurtis/",
     "https://www.linkedin.com/in/brandcurtis/",
@@ -108,8 +108,8 @@ const CardDiv = styled.div`
   margin-bottom: 50px;
   border: 1px solid #ffffff9d;
   border-radius: 10px;
-  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #1b356c,
-    0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #ff3a20,
+    0 0 0.8rem #ff3a20, 0 0 2.8rem #ff3a20, inset 0 0 1.3rem #ff3a20;
   background-color: #141414;
   align-items: center;
 

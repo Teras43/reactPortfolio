@@ -4,9 +4,18 @@ import { Card } from "../components";
 import movieDbImg from "../assets/images/angularMovieDBImg.png";
 import ecommerceStoreImg from "../assets/images/reactECommerceStoreImg.png";
 import golfScorecardImg from "../assets/images/angularGolfScorecardImg.jpeg";
+import mdAutomotiveImg from "../assets/images/md-automotive-repair.jpeg";
 
 /** Array of objects that holds data to be displayed in the card component. */
 const projects = [
+  {
+    title: "MD Automotive",
+    description:
+      "Best viewed on desktop or mobile! A local automotive company page made to view mechanic services and contact the company / mechanic!",
+    image: mdAutomotiveImg,
+    site: "mdautomotive.repair",
+    mobile: false,
+  },
   {
     title: "Angular MovieDB",
     description:
@@ -45,6 +54,7 @@ const HomePage = () => {
         description={project.description}
         site={project.site}
         mobile={project.mobile}
+        headerText="My work"
       ></Card>
     );
   });

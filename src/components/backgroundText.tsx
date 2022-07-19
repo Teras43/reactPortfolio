@@ -81,10 +81,10 @@ const BackgroundTextContainer = styled.div<{
   border-radius: 2rem;
   padding: 0.7em;
   box-shadow: ${({ currentView }) =>
-    currentView === "Webapps"
+    currentView === "Games"
       ? `0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #1b356c,
     0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;`
-      : currentView === "Resume"
+      : currentView === "Webapps"
       ? `0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #FBAF00,
     0 0 0.8rem #FBAF00, 0 0 2.8rem #FBAF00, inset 0 0 1.3rem #FBAF00;`
       : currentView === "Contact"
@@ -300,10 +300,10 @@ const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
   /* The color and text-shadow give the words their neon glow property. */
   color: #2a2727;
   text-shadow: ${({ currentView }) =>
-    currentView === "Webapps"
+    currentView === "Games"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c;`
-      : currentView === "Resume"
+      : currentView === "Webapps"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00;`
       : currentView === "Contact"
