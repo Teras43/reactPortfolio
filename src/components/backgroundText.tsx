@@ -69,7 +69,7 @@ const TextContainer = styled.div`
       opacity: 1;
     }
   }
-  animation: FadeIn 2s linear;
+  animation: FadeIn 1s linear;
 `;
 
 const BackgroundTextContainer = styled.div<{
@@ -92,33 +92,14 @@ const BackgroundTextContainer = styled.div<{
     0 0 0.8rem #FF3A20, 0 0 2.8rem #FF3A20, inset 0 0 1.3rem #FF3A20;`
       : `0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #1b356c,
     0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;`};
-  /* The flicker keyframe animation is a flickering color, almost like a lightbulb going out for a split second. */
-  @keyframes flicker {
-    0%,
-    18%,
-    22%,
-    25%,
-    53%,
-    57%,
-    100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #1b356c,
-        0 0 80px #1b356c, 0 0 90px #1b356c, 0 0 100px #1b356c, 0 0 150px #1b356c;
-    }
-    20%,
-    24%,
-    55% {
-      text-shadow: none;
-    }
-  }
-  /* animation: flicker 1.5s infinite alternate; */
 `;
 
 const WelcomeSmallTxt = styled.div<{ isClicked: boolean; currentView: any }>`
   opacity: ${({ isClicked }) => (isClicked ? 0.3 : 1)};
   font-family: "Dancing Script", cursive;
   font-size: 1.5em;
-  /* The color and text-shadow give the words their neon glow property. */
   color: #fff;
+  margin-right: 35px;
   text-shadow: ${({ currentView }) =>
     currentView === "Webapps"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
@@ -131,19 +112,6 @@ const WelcomeSmallTxt = styled.div<{ isClicked: boolean; currentView: any }>`
     0 0 82px #FF3A20, 0 0 92px #FF3A20, 0 0 102px #FF3A20, 0 0 151px #FF3A20;`
       : `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c;`};
-  /* The pulsate keyframe animation is a more contant color, slowly pulsating. Smoother. */
-  @keyframes pulsate {
-    100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #1b356c,
-        0 0 80px #1b356c, 0 0 90px #1b356c, 0 0 100px #1b356c, 0 0 150px #1b356c;
-    }
-
-    0% {
-      text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #1b356c,
-        0 0 73px #1b356c, 0 0 80px #1b356c, 0 0 94px #1b356c, 0 0 140px #1b356c;
-    }
-  }
-  /* animation: pulsate 0.11s ease-in-out infinite alternate; */
 
   @media (min-width: 700px) {
     font-size: 2.5em;
@@ -164,29 +132,6 @@ const WelcomeSmallTxt = styled.div<{ isClicked: boolean; currentView: any }>`
   @media (min-width: 1890px) {
     font-size: 5.5em;
   }
-
-  /* The flicker keyframe animation is a flickering color, almost like a lightbulb going out for a split second. */
-  @keyframes flicker {
-    0%,
-    18%,
-    22%,
-    25%,
-    53%,
-    57%,
-    100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #1b356c,
-        0 0 80px #1b356c, 0 0 90px #1b356c, 0 0 100px #1b356c, 0 0 150px #1b356c;
-    }
-    20%,
-    24%,
-    55% {
-      text-shadow: none;
-    }
-  }
-  /* This animation property is what decided which of the two animations to play for the neon text. */
-  /* animation: flicker 1.5s infinite alternate; */
-
-  margin-right: 35px;
 `;
 
 const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
@@ -194,13 +139,12 @@ const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
   font-family: "Dancing Script", cursive;
   font-size: 4em;
   font-weight: 700;
-  /* The color and text-shadow give the words their neon glow property. */
   color: #fff;
   text-shadow: ${({ currentView }) =>
-    currentView === "Webapps"
+    currentView === "Games"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c;`
-      : currentView === "Resume"
+      : currentView === "Webapps"
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00;`
       : currentView === "Contact"
@@ -249,18 +193,6 @@ const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
     font-size: 15em;
   }
 
-  /* The pulsate keyframe animation is a more contant color, slowly pulsating. Smoother. */
-  @keyframes pulsate {
-    100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #1b356c,
-        0 0 80px #1b356c, 0 0 90px #1b356c, 0 0 100px #1b356c, 0 0 150px #1b356c;
-    }
-
-    0% {
-      text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #1b356c,
-        0 0 73px #1b356c, 0 0 80px #1b356c, 0 0 94px #1b356c, 0 0 140px #1b356c;
-    }
-  }
   /* The flicker keyframe animation is a flickering color, almost like a lightbulb going out for a split second. */
   @keyframes flicker {
     0%,
@@ -281,10 +213,9 @@ const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
       text-shadow: none;
     }
   }
-  /* This animation property is what decided which of the two animations to play for the neon text. */
-  /* animation: pulsate 0.11s ease-in-out infinite alternate; */
+
   animation: ${({ isClicked }) =>
-    !isClicked ? `flicker 1.5s infinite 2.2s alternate;` : `none`};
+    !isClicked ? `flicker 1s infinite 1.2s alternate;` : `none`};
 `;
 
 const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
@@ -297,7 +228,6 @@ const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
   border: none;
   font-size: 2.5em;
   transform: rotate(-10deg);
-  /* The color and text-shadow give the words their neon glow property. */
   color: #2a2727;
   text-shadow: ${({ currentView }) =>
     currentView === "Games"
@@ -337,41 +267,7 @@ const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
       color: #fff;
     }
   }
-  animation: switch 0.1s 2.2s forwards;
-
-  /* The pulsate keyframe animation is a more contant color, slowly pulsating. Smoother. */
-  @keyframes pulsate {
-    100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #1b356c,
-        0 0 80px #1b356c, 0 0 90px #1b356c, 0 0 100px #1b356c, 0 0 150px #1b356c;
-    }
-
-    0% {
-      text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #1b356c,
-        0 0 73px #1b356c, 0 0 80px #1b356c, 0 0 94px #1b356c, 0 0 140px #1b356c;
-    }
-  }
-  /* animation: pulsate 0.11s ease-in-out infinite alternate; */
-
-  /* The flicker keyframe animation is a flickering color, almost like a lightbulb going out for a split second. */
-  @keyframes flicker {
-    0%,
-    18%,
-    22%,
-    25%,
-    53%,
-    57%,
-    100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #1b356c,
-        0 0 80px #1b356c, 0 0 90px #1b356c, 0 0 100px #1b356c, 0 0 150px #1b356c;
-    }
-    20%,
-    24%,
-    55% {
-      text-shadow: none;
-    }
-  }
-  /* animation: flicker 1.5s infinite alternate; */
+  animation: switch 0.1s 1.2s forwards;
 `;
 
 const BtnContainer = styled.div`
