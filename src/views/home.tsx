@@ -13,7 +13,7 @@ const projects = [
     description:
       "Best viewed on desktop or mobile! A local automotive company page made to view mechanic services and contact the company / mechanic!",
     image: mdAutomotiveImg,
-    site: "mdautomotive.repair",
+    site: "https://www.mdautomotive.repair",
     mobile: false,
   },
   {
