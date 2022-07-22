@@ -220,7 +220,7 @@ const TitleDiv = styled.div`
 const DescriptionDiv = styled.div``;
 
 const BtnDiv = styled.div<{ headerText: string }>`
-  --blueTheme: #98b8fc;
+  --blueTheme: #aac4fc;
   --goldTheme: #fbaf00;
 
   margin-top: 60px;
