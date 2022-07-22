@@ -80,6 +80,14 @@ const Card = ({
               {site}
             </Text>
           </DescriptionDiv>
+          <BtnDiv headerText={headerText}>
+            <a href={site} target="_blank" rel="noreferrer" id="navBtn">
+              <span>
+                {headerText === "My games" ? "Play Game!" : "Visit App!"}
+              </span>
+              <i></i>
+            </a>
+          </BtnDiv>
         </TextDiv>
       </BorderDiv>
     </CardDiv>
@@ -107,6 +115,15 @@ const CardDiv = styled.div<{ headerText: string }>`
   background-color: #141414;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
+
+  :hover {
+    box-shadow: ${({ headerText }) =>
+      headerText === "My games"
+        ? "0 0 0.5rem #fff, 0 0 0.5rem #fff, 0 0 3rem #1b356c, 0 0 2rem #1b356c, 0 0 2rem #1b356c, inset 0 0 2rem #1b356c;"
+        : "0 0 0.5rem #fff, 0 0 0.5rem #fff, 0 0 3rem #FBAF00, 0 0 2rem #FBAF00, 0 0 2rem #FBAF00, inset 0 0 2rem #FBAF00;"};
+    transition: 0.3s;
+  }
 
   @media (min-width: 865px) {
     max-width: 1300px;
@@ -201,6 +218,105 @@ const TitleDiv = styled.div`
 `;
 
 const DescriptionDiv = styled.div``;
+
+const BtnDiv = styled.div<{ headerText: string }>`
+  --blueTheme: #98b8fc;
+  --goldTheme: #fbaf00;
+
+  margin-top: 60px;
+
+  #navBtn {
+    position: relative;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 10px 30px;
+    transition: 0.5s;
+  }
+
+  #navBtn:hover {
+    letter-spacing: 0.25em;
+    background: ${({ headerText }) =>
+      headerText === "My games" ? "var(--blueTheme)" : "var(--goldTheme)"};
+    box-shadow: ${({ headerText }) =>
+      headerText === "My games"
+        ? "0 0 35px var(--blueTheme)"
+        : "0 0 35px var(--goldTheme)"};
+    color: ${({ headerText }) =>
+      headerText === "My games" ? "var(--blueTheme)" : "var(--goldTheme)"};
+  }
+
+  #navBtn::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #27282c;
+  }
+
+  #navBtn span {
+    position: relative;
+    z-index: 1;
+  }
+
+  #navBtn i {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+
+  #navBtn i::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: ${({ headerText }) =>
+      headerText === "My games"
+        ? "2px solid var(--blueTheme)"
+        : "2px solid var(--goldTheme)"};
+    transition: 0.5s;
+  }
+
+  #navBtn:hover i::before {
+    left: 0%;
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: ${({ headerText }) =>
+      headerText === "My games"
+        ? "40px 39px var(--blueTheme)"
+        : "40px 39px var(--goldTheme)"};
+  }
+
+  #navBtn i::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: ${({ headerText }) =>
+      headerText === "My games"
+        ? "2px solid var(--blueTheme)"
+        : "2px solid var(--goldTheme)"};
+    transition: 0.5s;
+  }
+
+  #navBtn:hover i::after {
+    left: 100%;
+    transform: translateX(-50%) rotate(-45deg);
+    box-shadow: ${({ headerText }) =>
+      headerText === "My games"
+        ? "40px -39px var(--blueTheme)"
+        : "40px -39px var(--goldTheme)"};
+  }
+`;
 
 /** Card Component Exports */
 export default Card;
