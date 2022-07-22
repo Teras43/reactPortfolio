@@ -14,7 +14,10 @@ type NavBarItemProps = {
   onRouteSelect: (viewName: string) => void;
   /** The boolean passed in telling the component whether or not the current route displayed is the 'selected' route / view, or currently active route / view. */
   isSelected: boolean;
+  /** String of the currently selected route. */
   currentRoute: string;
+  /** Boolean dictating whether the view is mobile. */
+  mobile: boolean;
 };
 
 type GenericProps = {
@@ -51,6 +54,7 @@ const NavBar = () => {
         viewName={viewName}
         isSelected={currentRoute === viewName}
         currentRoute={currentRoute}
+        mobile
       ></NavBarItem>
     ));
   }, [currentRoute, viewNames]);
@@ -76,6 +80,7 @@ const NavBarItem = ({
   currentRoute,
   onRouteSelect,
   isSelected,
+  mobile,
 }: NavBarItemProps) => {
   const formatRouteName = useCallback(
     () => viewName.replace(/([A-Z]+)/g, " $1"),
@@ -83,14 +88,19 @@ const NavBarItem = ({
   );
 
   return (
-    <NavBarItemStyle
-      isSelected={isSelected}
+    <NavBarListItemStyle
       viewName={viewName}
-      currentRoute={currentRoute}
-      onClick={() => onRouteSelect(viewName)}
+      isSelected={isSelected}
+      mobile={mobile}
     >
-      {formatRouteName()}
-    </NavBarItemStyle>
+      <NavBarItemStyle
+        // currentRoute={currentRoute}
+        isSelected={isSelected}
+        onClick={() => onRouteSelect(viewName)}
+      >
+        {formatRouteName()}
+      </NavBarItemStyle>
+    </NavBarListItemStyle>
   );
 };
 
@@ -104,7 +114,6 @@ const NavBarItem = ({
 /** Navbar Styles */
 const PageWrapper = styled.div<{ viewName: string }>`
   display: flex;
-  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background-image: ${({ viewName }) =>
@@ -121,76 +130,219 @@ const PageWrapper = styled.div<{ viewName: string }>`
   background-size: 100% 100%;
   text-align: center;
   font-family: "Indie Flower", cursive;
+  padding-bottom: 50px;
 `;
 
 const NavContainer = styled.div`
-  width: 100%;
   display: flex;
-  justify-content: center;
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  text-align: left;
+  z-index: 100;
 `;
+
+// const NavContainer = styled.div`
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+// `;
 
 const NavBarStyle = styled.div`
-  width: 100%;
-  max-width: 1275px;
-  height: 70px;
-  position: fixed;
-  font-size: 16px;
-  background: none;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  text-decoration: none;
-  z-index: 20;
-
-  @media (min-width: 1275px) {
-    margin: auto;
-  }
+  position: relative;
+  transform: skewY(-15deg);
 `;
 
-const NavBarItemStyle = styled.div<{
-  isSelected: boolean;
+// const NavBarStyle = styled.div`
+//   width: 100%;
+//   max-width: 1275px;
+//   height: 70px;
+//   position: fixed;
+//   font-size: 16px;
+//   background: none;
+//   display: flex;
+//   justify-content: space-evenly;
+//   align-items: center;
+//   text-decoration: none;
+//   z-index: 20;
+
+//   @media (min-width: 1275px) {
+//     margin: auto;
+//   }
+// `;
+
+const NavBarListItemStyle = styled.div<{
   viewName: string;
-  currentRoute: string;
+  isSelected: boolean;
+  mobile: boolean;
 }>`
-  margin-right: 4px;
-  padding-left: 18px;
-  font-size: 20px;
-  user-select: none;
-  cursor: pointer;
-  opacity: ${({ isSelected }) => (isSelected ? "1" : "0.5")};
-  color: ${({ isSelected, viewName }) =>
-    isSelected && viewName === "Games"
-      ? "#FFF"
-      : isSelected && viewName === "Webapps"
-      ? "#FFE7AD"
-      : isSelected && viewName === "Contact"
-      ? "#FFC9C2"
-      : "#FFF"};
-  text-shadow: ${({ isSelected, viewName }) =>
-    isSelected && viewName === "Games"
-      ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
-    0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 100px #1b356c`
-      : isSelected && viewName === "Webapps"
-      ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
-    0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00`
-      : isSelected && viewName === "Contact"
-      ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FF3A20,
-    0 0 82px #FF3A20, 0 0 92px #FF3A20, 0 0 102px #FF3A20, 0 0 151px #FF3A20`
-      : "none"};
-  padding-right: 18px;
+  position: relative;
+  list-style: none;
+  width: 200px;
+  background: ${({ isSelected, viewName }) =>
+    isSelected
+      ? viewName === "Games"
+        ? "#1b345c"
+        : viewName === "Webapps"
+        ? "#FBAF00"
+        : "#FF3A20"
+      : "#3e3f46"};
+  padding-left: 10px;
+  z-index: ${({ viewName }) =>
+    viewName === "Games" ? "2" : viewName === "Webapps" ? "3" : "1"};
+  transition: 0.5s;
+  transform: ${({ isSelected }) => (isSelected ? "translateX(50px)" : "none")};
 
-  @media (min-width: 460px) {
-    font-size: 28px;
+  :hover {
+    background: ${({ isSelected, viewName }) =>
+      isSelected
+        ? viewName === "Games"
+          ? "#1b345c"
+          : viewName === "Webapps"
+          ? "#FBAF00"
+          : "#FF3A20"
+        : viewName === "Games"
+        ? "#1b345c"
+        : viewName === "Webapps"
+        ? "#FBAF00"
+        : "#FF3A20"};
+    transform: translateX(50px);
+
+    ::before {
+      background: ${({ isSelected, viewName }) =>
+        isSelected
+          ? viewName === "Games"
+            ? "#1b345c"
+            : viewName === "Webapps"
+            ? "#FBAF00"
+            : "#FF3A20"
+          : viewName === "Games"
+          ? "#1b345c"
+          : viewName === "Webapps"
+          ? "#FBAF00"
+          : "#FF3A20"};
+    }
+
+    ::after {
+      background: ${({ isSelected, viewName }) =>
+        isSelected
+          ? viewName === "Games"
+            ? "#1b345c"
+            : viewName === "Webapps"
+            ? "#FBAF00"
+            : "#FF3A20"
+          : viewName === "Games"
+          ? "#1b345c"
+          : viewName === "Webapps"
+          ? "#FBAF00"
+          : "#FF3A20"};
+    }
   }
 
-  @media (min-width: 865px) {
-    font-size: 32px;
+  ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 40px;
+    height: 100%;
+    background: #2e3133;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.5s;
+    background: ${({ isSelected, viewName }) =>
+      isSelected
+        ? viewName === "Games"
+          ? "#1b345c"
+          : viewName === "Webapps"
+          ? "#FBAF00"
+          : "#FF3A20"
+        : "#3e3f46"};
   }
 
-  @media (min-width: 1200px) {
-    font-size: 42px;
+  ::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #35383e;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+    background: ${({ isSelected, viewName }) =>
+      isSelected
+        ? viewName === "Games"
+          ? "#1b345c"
+          : viewName === "Webapps"
+          ? "#FBAF00"
+          : "#FF3A20"
+        : "#3e3f46"};
+  }
+
+  :last-child::after {
+    box-shadow: -120px 120px 20px rgba(0, 0, 0, 0.25);
   }
 `;
+
+const NavBarItemStyle = styled.div<{ isSelected: boolean }>`
+  color: ${({ isSelected }) => (isSelected ? "#fff" : "#999")};
+  display: block;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  line-height: 4em;
+  font-weight: 600;
+
+  :hover {
+    color: #fff;
+  }
+`;
+
+// const NavBarItemStyle = styled.div<{
+//   isSelected: boolean;
+//   viewName: string;
+//   currentRoute: string;
+// }>`
+//   margin-right: 4px;
+//   padding-left: 18px;
+//   font-size: 20px;
+//   user-select: none;
+//   cursor: pointer;
+//   opacity: ${({ isSelected }) => (isSelected ? "1" : "0.5")};
+//   color: ${({ isSelected, viewName }) =>
+//     isSelected && viewName === "Games"
+//       ? "#FFF"
+//       : isSelected && viewName === "Webapps"
+//       ? "#FFE7AD"
+//       : isSelected && viewName === "Contact"
+//       ? "#FFC9C2"
+//       : "#FFF"};
+//   text-shadow: ${({ isSelected, viewName }) =>
+//     isSelected && viewName === "Games"
+//       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
+//     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 100px #1b356c`
+//       : isSelected && viewName === "Webapps"
+//       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
+//     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00`
+//       : isSelected && viewName === "Contact"
+//       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FF3A20,
+//     0 0 82px #FF3A20, 0 0 92px #FF3A20, 0 0 102px #FF3A20, 0 0 151px #FF3A20`
+//       : "none"};
+//   padding-right: 18px;
+
+//   @media (min-width: 460px) {
+//     font-size: 28px;
+//   }
+
+//   @media (min-width: 865px) {
+//     font-size: 32px;
+//   }
+
+//   @media (min-width: 1200px) {
+//     font-size: 42px;
+//   }
+// `;
 
 /** Navbar Exports */
 export default NavBar;

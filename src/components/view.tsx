@@ -37,6 +37,7 @@ const BodyStyle = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 50px;
+  margin-left: 50px;
   z-index: 10;
   overflow: scroll;
   overflow-x: none;
@@ -49,7 +50,7 @@ const BodyStyle = styled.div`
 const HeaderDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   z-index: 11;
 `;
 

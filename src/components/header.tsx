@@ -15,7 +15,8 @@ const Header = ({ text }: Props) => (
 const HeaderStyle = styled.div<{ text: string }>`
   width: 100%;
   height: 2em;
-  position: fixed;
+  /* position: fixed; */
+  overflow: hidden;
   font-size: 2em;
   background: none;
   box-sizing: border-box;
