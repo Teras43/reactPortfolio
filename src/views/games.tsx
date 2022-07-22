@@ -23,7 +23,7 @@ const gameProjects = [
   {
     title: "Candy Crush",
     description:
-      "Best viewed on Desktop! A quick and simple candy crush game using React! (W.I.P. CSS)",
+      "Best viewed on Desktop! A quick and simple candy crush game using React!",
     image: redSwirl,
     site: "https://teras43.github.io/candy-crush/",
     mobile: false,
