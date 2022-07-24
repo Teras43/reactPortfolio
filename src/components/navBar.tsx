@@ -127,9 +127,6 @@ const PageWrapper = styled.div<{ viewName: string }>`
   text-align: center;
   font-family: "Indie Flower", cursive;
   flex-direction: column;
-
-  @media screen and (max-width: 1200px) {
-  }
 `;
 
 const NavContainer = styled.div`
@@ -150,12 +147,6 @@ const NavContainer = styled.div`
     text-align: center;
   }
 `;
-
-// const NavContainer = styled.div`
-//   width: 100%;
-//   display: flex;
-//   justify-content: center;
-// `;
 
 const NavBarStyle = styled.div`
   position: relative;
