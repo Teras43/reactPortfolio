@@ -30,7 +30,7 @@ const BkgdTxt = ({ setSiteState, currentView }: BkgdProps) => {
           currentView={currentView}
           isClicked={isClicked.current}
         >
-          My Name Is
+          Welcome to the website of
         </WelcomeSmallTxt>
         <NameTxt currentView={currentView} isClicked={isClicked.current}>
           Brandon Curtis
@@ -41,6 +41,7 @@ const BkgdTxt = ({ setSiteState, currentView }: BkgdProps) => {
           currentView={currentView}
           isClicked={isClicked.current}
           onClick={() => EnterSiteFn()}
+          data-text="Enter"
         >
           Enter
         </EnterBtn>
@@ -60,16 +61,18 @@ const TextContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   font-weight: 400;
+  transition: 1s;
+  opacity: 0;
 
   @keyframes FadeIn {
-    0% {
+    50% {
       opacity: 0;
     }
     100% {
       opacity: 1;
     }
   }
-  animation: FadeIn 1s linear;
+  animation: FadeIn 1s linear forwards;
 `;
 
 const BackgroundTextContainer = styled.div<{
@@ -80,16 +83,19 @@ const BackgroundTextContainer = styled.div<{
     isClicked ? `0.3rem solid rgba(255, 255, 255, 0.3)` : `0.3rem solid #fff`};
   border-radius: 2rem;
   padding: 0.7em;
-  box-shadow: ${({ currentView }) =>
+  box-shadow: ${({ currentView, isClicked }) =>
     currentView === "Games"
-      ? `0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #1b356c,
-    0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;`
+      ? !isClicked
+        ? `0 0 20px #fff`
+        : "0 0 20px #9e9e9e"
       : currentView === "Webapps"
-      ? `0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #FBAF00,
-    0 0 0.8rem #FBAF00, 0 0 2.8rem #FBAF00, inset 0 0 1.3rem #FBAF00;`
+      ? !isClicked
+        ? "0 0 20px #FBAF00"
+        : "0 0 20px #a27100"
       : currentView === "Contact"
-      ? `0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #FF3A20,
-    0 0 0.8rem #FF3A20, 0 0 2.8rem #FF3A20, inset 0 0 1.3rem #FF3A20;`
+      ? !isClicked
+        ? "0 0 20px #FF3A20"
+        : "0 0 20px #932213"
       : `0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #1b356c,
     0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;`};
 `;
@@ -202,8 +208,7 @@ const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
     53%,
     57%,
     100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #1b356c,
-        0 0 80px #1b356c, 0 0 90px #1b356c, 0 0 100px #1b356c, 0 0 150px #1b356c;
+      text-shadow: 0 0 35px #fff;
     }
     8%,
     20%,
@@ -215,7 +220,7 @@ const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
   }
 
   animation: ${({ isClicked }) =>
-    !isClicked ? `flicker 1s infinite 1.2s alternate;` : `none`};
+    !isClicked ? `flicker 3s infinite 1.2s alternate;` : `none`};
 `;
 
 const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
@@ -228,19 +233,32 @@ const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
   border: none;
   font-size: 2.5em;
   transform: rotate(-10deg);
-  color: #2a2727;
-  text-shadow: ${({ currentView }) =>
-    currentView === "Games"
-      ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
-    0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c;`
-      : currentView === "Webapps"
-      ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
-    0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00;`
-      : currentView === "Contact"
-      ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FF3A20,
-    0 0 82px #FF3A20, 0 0 92px #FF3A20, 0 0 102px #FF3A20, 0 0 151px #FF3A20;`
-      : `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
-    0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c;`};
+  color: #fff;
+  text-shadow: "0 0 20px #fff";
+
+  :before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: -2;
+    opacity: 0.5;
+    filter: blur(40px);
+  }
+
+  :after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    z-index: -1;
+    color: #fff;
+    filter: blur(15px);
+  }
 
   @media (min-width: 700px) {
     font-size: 3.5em;
@@ -257,17 +275,6 @@ const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
   @media (min-width: 1300px) {
     font-size: 5.5em;
   }
-
-  /** The switch keyframe animation quickly changes the color of the enter button from an "off" to an "on" color. */
-  @keyframes switch {
-    0% {
-      color: #2a2727;
-    }
-    100% {
-      color: #fff;
-    }
-  }
-  animation: switch 0.1s 1.2s forwards;
 `;
 
 const BtnContainer = styled.div`
