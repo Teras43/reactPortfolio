@@ -99,7 +99,7 @@ const BodyWrapper = styled.div`
 const CardDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   max-width: 400px;
   height: 25em;
   margin-right: 15px;
@@ -115,12 +115,17 @@ const CardDiv = styled.div`
 
   @media (min-width: 700px) {
     max-width: 800px;
-    height: 28em;
+    height: 32em;
   }
 
   @media (min-width: 1100px) {
     max-width: 1000px;
     height: 30em;
+  }
+
+  @media (min-width: 1300px) {
+    max-width: 1200px;
+    height: 35em;
   }
 
   @media (min-width: 1300px) {
@@ -149,11 +154,8 @@ const ContactDiv = styled.div`
   align-items: center;
   padding-top: 20px;
 
-  @media (min-width: 1100px) {
+  @media (min-width: 900px) {
     flex-direction: row;
-  }
-
-  @media (min-width: 1300px) {
   }
 `;
 

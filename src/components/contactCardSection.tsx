@@ -81,7 +81,13 @@ const ContactCardSection = ({
   return imgPath ? (
     <SectionDiv imgPath={imgPath}>
       <TitleDiv>
-        <Text fontSize={titleSection} italic color={"white"}>
+        <Text
+          fontSize={titleSection}
+          italic
+          color={"white"}
+          // eslint-disable-next-line no-restricted-globals
+          align={screen.width <= 1200 ? "center" : "left"}
+        >
           {sectionTitle}
         </Text>
       </TitleDiv>
@@ -90,7 +96,13 @@ const ContactCardSection = ({
   ) : (
     <SectionDiv imgPath={imgPath}>
       <TitleDiv>
-        <Text fontSize={titleSection} italic color={"white"}>
+        <Text
+          fontSize={titleSection}
+          italic
+          color={"white"}
+          // eslint-disable-next-line no-restricted-globals
+          align={screen.width <= 1200 ? "center" : "left"}
+        >
           {sectionTitle}
         </Text>
       </TitleDiv>
@@ -115,23 +127,9 @@ const SectionDiv = styled.div<{ imgPath: any }>`
   flex-direction: column;
   align-items: center;
 
-  ${({ imgPath }) =>
-    !imgPath
-      ? `@media (min-width: 1100px) {
-          margin-bottom: 200px;
-        }`
-      : `@media (min-width: 1100px) {
-          margin-top: 200px;
-        }`}
-
-  ${({ imgPath }) =>
-    !imgPath
-      ? `@media (min-width: 1300px) {
-          margin-bottom: 0;
-        }`
-      : `@media (min-width: 1300px) {
-          margin-top: 0;
-        }`}
+  @media screen and (max-width: 899px) {
+    padding-bottom: 50px;
+  }
 `;
 
 const TitleDiv = styled.div``;

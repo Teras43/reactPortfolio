@@ -99,8 +99,8 @@ const CardDiv = styled.div<{ headerText: string }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70%;
-  max-width: 400px;
+  height: 100%;
+  max-width: 1300px;
   margin-right: 15px;
   margin-left: 15px;
   margin-top: 25px;
@@ -124,10 +124,6 @@ const CardDiv = styled.div<{ headerText: string }>`
         : "0 0 0.5rem #fff, 0 0 0.5rem #fff, 0 0 3rem #FBAF00, 0 0 2rem #FBAF00, 0 0 2rem #FBAF00, inset 0 0 2rem #FBAF00;"};
     transition: 0.3s;
   }
-
-  @media (min-width: 865px) {
-    max-width: 1300px;
-  }
 `;
 
 const BorderDiv = styled.div`
@@ -140,13 +136,13 @@ const BorderDiv = styled.div`
   border-radius: 5px;
   margin: 8px;
 
-  @media (min-width: 865px) {
+  @media (min-width: 800px) {
     flex-direction: row;
   }
 `;
 
 const BackgroundDiv = styled.div`
-  width: 90%;
+  width: 70%;
   height: 175px;
   margin-top: 15px;
   display: flex;
@@ -155,14 +151,16 @@ const BackgroundDiv = styled.div`
   align-items: center;
   border: 1px solid #c2c2c2;
   border-radius: 10px;
+  z-index: 10;
+  overflow: hidden;
 
   @media (min-width: 410px) {
     height: 225px;
   }
 
-  @media (min-width: 865px) {
+  @media (min-width: 800px) {
     width: 50%;
-    height: 80%;
+    height: 100%;
     margin-left: 10px;
     margin-bottom: 15px;
   }
@@ -172,16 +170,18 @@ const ImageDiv = styled.div<{ mobile: boolean }>`
   width: ${({ mobile }) => (mobile ? "33%" : "100%")};
   height: 175px;
   object-fit: contain;
+
   @media (min-width: 410px) {
     height: 225px;
   }
 
-  @media (min-width: 865px) {
-    height: 100%;
-    width: ${({ mobile }) => (mobile ? "50%" : "100%")};
+  @media screen and (max-width: 550px) {
+    width: ${({ mobile }) => (mobile ? "40%" : "100%")};
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 800px) {
+    height: 100%;
+    width: ${({ mobile }) => (mobile ? "50%" : "100%")};
   }
 `;
 
@@ -189,7 +189,7 @@ const ProjectImg = styled.img<{ mobile: boolean }>`
   height: 100%;
   width: 100%;
 
-  @media (min-width: 865px) {
+  @media (min-width: 800px) {
     border-radius: ${({ mobile }) => (!mobile ? "10px" : "0")};
   }
 `;
@@ -199,12 +199,12 @@ const TextDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 85%;
+  width: 70%;
   margin: auto;
   margin-top: 0;
   margin-bottom: 10px;
 
-  @media (min-width: 865px) {
+  @media (min-width: 800px) {
     width: 45%;
   }
 `;
@@ -217,13 +217,24 @@ const TitleDiv = styled.div`
   margin-bottom: 6px;
 `;
 
-const DescriptionDiv = styled.div``;
+const DescriptionDiv = styled.div`
+  display: flex;
+`;
 
 const BtnDiv = styled.div<{ headerText: string }>`
   --blueTheme: #aac4fc;
   --goldTheme: #fbaf00;
 
   margin-top: 60px;
+  display: flex;
+
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 1084px) {
+    margin-top: 30px;
+  }
 
   #navBtn {
     position: relative;
