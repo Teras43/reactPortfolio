@@ -31,7 +31,7 @@ const gameProjects = [
   {
     title: "JavaScript Hangman",
     description:
-      "Best viewed on desktop! A simple JavaScript game that lets you play a game of hangman from a predetermined set of words.",
+      "Best viewed on desktop! A simple JavaScript game that lets you play a game of hangman!",
     image: hangManImg,
     site: "https://teras43.github.io/Hang-Man/",
     mobile: false,
@@ -83,13 +83,12 @@ const BodyWrapper = styled.div`
 
 const ProjectDiv = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
   padding-bottom: 100px;
-  height: 100%;
-  width: 100%;
-  max-width: 1285px;
   margin: auto;
+  margin-top: 60px;
   opacity: 0;
   @keyframes fadeIn {
     0% {
@@ -101,8 +100,9 @@ const ProjectDiv = styled.div`
   }
   animation: fadeIn 1s linear 0.2s 1 forwards;
 
-  /* @media (min-width: 865px) {
-  } */
+  @media screen and (max-width: 799px) {
+    margin-top: 10;
+  }
 `;
 
 /** Exports */

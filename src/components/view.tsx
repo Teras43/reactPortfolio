@@ -29,28 +29,34 @@ const ViewStyle = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
+
+  @media screen and (max-width: 1200px) {
+    align-items: center;
+  }
 `;
 
 const BodyStyle = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  margin-left: 50px;
+  margin-top: 75px;
+  padding-left: 30px;
+  padding-right: 30px;
   z-index: 10;
   overflow: scroll;
   overflow-x: none;
 
-  @media (min-width: 865px) {
-    margin-top: 75px;
+  @media screen and (max-width: 1200px) {
+    height: auto;
+    margin-left: 0;
+    margin-top: 0px;
+    padding: 0px 20px;
   }
 `;
 
 const HeaderDiv = styled.div`
   display: flex;
   justify-content: center;
-  /* margin-top: 50px; */
   z-index: 11;
 `;
 

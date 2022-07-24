@@ -15,7 +15,6 @@ const Header = ({ text }: Props) => (
 const HeaderStyle = styled.div<{ text: string }>`
   width: 100%;
   height: 2em;
-  /* position: fixed; */
   overflow: hidden;
   font-size: 2em;
   background: none;
@@ -53,8 +52,12 @@ const HeaderStyle = styled.div<{ text: string }>`
     font-size: 2.7em;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1201px) {
     font-size: 3.5em;
+  }
+
+  @media screen and (max-width: 1200px) {
+    margin-top: 100px;
   }
 
   /** Flicker in animation on site content load. */

@@ -11,7 +11,7 @@ const projects = [
   {
     title: "MD Automotive",
     description:
-      "Best viewed on desktop or mobile! A local automotive company page made to view mechanic services and contact the company / mechanic!",
+      "Best viewed on desktop or mobile! A local automotive company page made to view mechanic services and contact the mechanic!",
     image: mdAutomotiveImg,
     site: "https://www.mdautomotive.repair",
     mobile: false,
@@ -88,14 +88,13 @@ const BodyWrapper = styled.div`
 
 const ProjectDiv = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
   padding-bottom: 100px;
-  height: 100%;
-  width: 100%;
-  max-width: 1285px;
   margin: auto;
   opacity: 0;
+  margin-top: 70px;
+
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -105,9 +104,6 @@ const ProjectDiv = styled.div`
     }
   }
   animation: fadeIn 1s linear 0.2s 1 forwards;
-
-  @media (min-width: 865px) {
-  }
 `;
 
 /** Home View Exports */

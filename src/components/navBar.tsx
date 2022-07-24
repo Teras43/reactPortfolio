@@ -16,8 +16,6 @@ type NavBarItemProps = {
   isSelected: boolean;
   /** String of the currently selected route. */
   currentRoute: string;
-  /** Boolean dictating whether the view is mobile. */
-  mobile: boolean;
 };
 
 type GenericProps = {
@@ -54,7 +52,6 @@ const NavBar = () => {
         viewName={viewName}
         isSelected={currentRoute === viewName}
         currentRoute={currentRoute}
-        mobile
       ></NavBarItem>
     ));
   }, [currentRoute, viewNames]);
@@ -80,7 +77,6 @@ const NavBarItem = ({
   currentRoute,
   onRouteSelect,
   isSelected,
-  mobile,
 }: NavBarItemProps) => {
   const formatRouteName = useCallback(
     () => viewName.replace(/([A-Z]+)/g, " $1"),
@@ -91,7 +87,7 @@ const NavBarItem = ({
     <NavBarListItemStyle
       viewName={viewName}
       isSelected={isSelected}
-      mobile={mobile}
+      currentRoute={currentRoute}
     >
       <NavBarItemStyle
         // currentRoute={currentRoute}
@@ -131,6 +127,10 @@ const PageWrapper = styled.div<{ viewName: string }>`
   text-align: center;
   font-family: "Indie Flower", cursive;
   padding-bottom: 50px;
+  flex-direction: column;
+
+  @media screen and (max-width: 1200px) {
+  }
 `;
 
 const NavContainer = styled.div`
@@ -140,6 +140,16 @@ const NavContainer = styled.div`
   left: 5%;
   text-align: left;
   z-index: 100;
+
+  @media screen and (max-width: 1200px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 // const NavContainer = styled.div`
@@ -151,6 +161,13 @@ const NavContainer = styled.div`
 const NavBarStyle = styled.div`
   position: relative;
   transform: skewY(-15deg);
+
+  @media screen and (max-width: 1200px) {
+    position: static;
+    transform: none;
+    display: flex;
+    width: 100%;
+  }
 `;
 
 // const NavBarStyle = styled.div`
@@ -174,24 +191,35 @@ const NavBarStyle = styled.div`
 const NavBarListItemStyle = styled.div<{
   viewName: string;
   isSelected: boolean;
-  mobile: boolean;
+  currentRoute: string;
 }>`
   position: relative;
   list-style: none;
   width: 200px;
-  background: ${({ isSelected, viewName }) =>
+  background: ${({ isSelected, viewName, currentRoute }) =>
     isSelected
       ? viewName === "Games"
         ? "#1b345c"
         : viewName === "Webapps"
         ? "#FBAF00"
         : "#FF3A20"
-      : "#3e3f46"};
+      : currentRoute === "Games"
+      ? "#26293d"
+      : currentRoute === "Webapps"
+      ? "#3d3c26"
+      : "#3d2626"};
   padding-left: 10px;
   z-index: ${({ viewName }) =>
     viewName === "Games" ? "2" : viewName === "Webapps" ? "3" : "1"};
   transition: 0.5s;
   transform: ${({ isSelected }) => (isSelected ? "translateX(50px)" : "none")};
+
+  @media screen and (max-width: 1200px) {
+    transform: none;
+    z-index: 0;
+    width: 100%;
+    opacity: ${({ isSelected }) => (isSelected ? "1" : "0.7")};
+  }
 
   :hover {
     background: ${({ isSelected, viewName }) =>
@@ -208,6 +236,10 @@ const NavBarListItemStyle = styled.div<{
         : "#FF3A20"};
     transform: translateX(50px);
 
+    @media screen and (max-width: 1200px) {
+      transform: none;
+    }
+
     ::before {
       background: ${({ isSelected, viewName }) =>
         isSelected
@@ -221,6 +253,10 @@ const NavBarListItemStyle = styled.div<{
           : viewName === "Webapps"
           ? "#FBAF00"
           : "#FF3A20"};
+
+      @media screen and (max-width: 1200px) {
+        background: none;
+      }
     }
 
     ::after {
@@ -236,6 +272,10 @@ const NavBarListItemStyle = styled.div<{
           : viewName === "Webapps"
           ? "#FBAF00"
           : "#FF3A20"};
+
+      @media screen and (max-width: 1200px) {
+        background: none;
+      }
     }
   }
 
@@ -246,7 +286,7 @@ const NavBarListItemStyle = styled.div<{
     left: -40px;
     width: 40px;
     height: 100%;
-    background: #2e3133;
+    background: #3e3f46;
     transform-origin: right;
     transform: skewY(45deg);
     transition: 0.5s;
@@ -258,6 +298,12 @@ const NavBarListItemStyle = styled.div<{
           ? "#FBAF00"
           : "#FF3A20"
         : "#3e3f46"};
+
+    @media screen and (max-width: 1200px) {
+      position: static;
+      transform: none;
+      background: none;
+    }
   }
 
   ::after {
@@ -279,10 +325,20 @@ const NavBarListItemStyle = styled.div<{
           ? "#FBAF00"
           : "#FF3A20"
         : "#3e3f46"};
+
+    @media screen and (max-width: 1200px) {
+      position: static;
+      transform: none;
+      background: none;
+    }
   }
 
   :last-child::after {
     box-shadow: -120px 120px 20px rgba(0, 0, 0, 0.25);
+
+    @media screen and (max-width: 1200px) {
+      box-shadow: none;
+    }
   }
 `;
 
@@ -293,6 +349,11 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean }>`
   transition: 0.5s;
   line-height: 4em;
   font-weight: 600;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 20px;
+    width: 100%;
+  }
 
   :hover {
     color: #fff;
