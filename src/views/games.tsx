@@ -86,7 +86,6 @@ const ProjectDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding-bottom: 100px; */
   margin: auto;
   margin-top: 60px;
   opacity: 0;

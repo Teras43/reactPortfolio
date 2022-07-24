@@ -90,6 +90,7 @@ const ProjectDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding-bottom: 100px;
   margin: auto;
   opacity: 0;
