@@ -71,7 +71,6 @@ const Card = ({
           <DescriptionDiv>
             <Text
               fontSize={fontSizeDesc}
-              link
               underline={false}
               mask={description}
               color={"white"}
@@ -105,7 +104,6 @@ const CardDiv = styled.div<{ headerText: string }>`
   margin-left: 15px;
   margin-top: 25px;
   margin-bottom: 50px;
-  cursor: pointer;
   border: 1px solid #ffffff9d;
   border-radius: 10px;
   box-shadow: ${({ headerText }) =>
@@ -116,14 +114,6 @@ const CardDiv = styled.div<{ headerText: string }>`
   align-items: center;
   justify-content: center;
   transition: 0.3s;
-
-  :hover {
-    box-shadow: ${({ headerText }) =>
-      headerText === "My games"
-        ? "0 0 0.5rem #fff, 0 0 0.5rem #fff, 0 0 3rem #1b356c, 0 0 2rem #1b356c, 0 0 2rem #1b356c, inset 0 0 2rem #1b356c;"
-        : "0 0 0.5rem #fff, 0 0 0.5rem #fff, 0 0 3rem #FBAF00, 0 0 2rem #FBAF00, 0 0 2rem #FBAF00, inset 0 0 2rem #FBAF00;"};
-    transition: 0.3s;
-  }
 `;
 
 const BorderDiv = styled.div`
@@ -153,6 +143,7 @@ const BackgroundDiv = styled.div`
   border-radius: 10px;
   z-index: 10;
   overflow: hidden;
+  cursor: pointer;
 
   @media (min-width: 410px) {
     height: 225px;
@@ -215,6 +206,7 @@ const TitleDiv = styled.div`
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 6px;
+  cursor: pointer;
 
   @media screen and (max-width: 850px) {
     font-size: 28;
