@@ -48,7 +48,7 @@ const Text = ({
       color={color}
       fontSize={fontSize}
     >
-      {children}
+      {mask ? mask : children}
     </TextRenderer>
   ) : (
     <LinkRenderer
