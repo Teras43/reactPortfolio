@@ -35,8 +35,8 @@ const Card = ({
     fontSizeTitle = 40;
     fontSizeDesc = 34;
   } else {
-    fontSizeTitle = 18;
-    fontSizeDesc = 16;
+    fontSizeTitle = 22;
+    fontSizeDesc = 20;
   }
   /** Function that simply opens the website of the project clicked. */
   const navSite = (site: any) => {
@@ -215,6 +215,10 @@ const TitleDiv = styled.div`
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 6px;
+
+  @media screen and (max-width: 850px) {
+    font-size: 28;
+  }
 `;
 
 const DescriptionDiv = styled.div`

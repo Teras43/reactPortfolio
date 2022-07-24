@@ -126,7 +126,6 @@ const PageWrapper = styled.div<{ viewName: string }>`
   background-size: 100% 100%;
   text-align: center;
   font-family: "Indie Flower", cursive;
-  padding-bottom: 50px;
   flex-direction: column;
 
   @media screen and (max-width: 1200px) {
