@@ -25,6 +25,8 @@ type Props = {
   newTab?: boolean;
   /** Typing for the node which holds the children (if any). */
   children?: ReactNode;
+  /** Prop that flags whether to display the hover effect. */
+  hover?: boolean;
 };
 
 /** A versatile component for rendering text using different props to achieve different effects. Effects are displayed in the types above. */
@@ -39,6 +41,7 @@ const Text = ({
   mask,
   newTab = true,
   children,
+  hover = false,
 }: Props) =>
   !link ? (
     <TextRenderer
@@ -68,6 +71,7 @@ const Text = ({
       italic={italic}
       color={color}
       fontSize={fontSize}
+      hover={hover}
     >
       {mask ? mask : children}
     </LinkRenderer>
@@ -75,7 +79,7 @@ const Text = ({
 
 /** Text Component Styles */
 
-const TextRenderer = styled.div<Omit<Props, "children" | "link">>`
+const TextRenderer = styled.div<Omit<Props, "children" | "link" | "hover">>`
   background-color: transparent;
   display: flex;
   text-align: ${({ align }) => align};
@@ -93,6 +97,35 @@ const LinkRenderer = styled.a<Omit<Props, "children" | "link">>`
   font-style: ${({ italic }) => (italic ? "italic" : "none")};
   font-size: ${({ fontSize }) => `${fontSize}px`};
   color: ${({ color }) => color};
+
+  /* ${({ hover }) =>
+    hover
+      ? `:hover {
+    :before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: -2;
+      opacity: 0.5;
+      filter: blur(40px);
+    }
+
+    :after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 20px;
+      z-index: -1;
+      color: #fff;
+      filter: blur(15px);
+    }
+  }`
+      : ``} */
 `;
 
 /** Text Component Exports */
