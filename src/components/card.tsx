@@ -64,6 +64,8 @@ const Card = ({
               mask={title}
               color={"white"}
               align={"center"}
+              hover
+              data-text={title}
             >
               {site}
             </Text>

@@ -44,6 +44,13 @@ const BodyStyle = styled.div`
   padding-right: 30px;
   z-index: 10;
   overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+
+  ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 
   @media screen and (max-width: 1200px) {
     height: auto;
