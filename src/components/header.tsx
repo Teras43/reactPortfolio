@@ -59,54 +59,6 @@ const HeaderStyle = styled.div<{ text: string }>`
   @media screen and (max-width: 1200px) {
     margin-top: 100px;
   }
-
-  /** Flicker in animation on site content load. */
-  @keyframes flickerIn {
-    0%,
-    18%,
-    22%,
-    25%,
-    53%,
-    57%,
-    100% {
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #e6af2e,
-        0 0 80px #e6af2e, 0 0 90px #e6af2e, 0 0 100px #e6af2e, 0 0 150px #e6af2e;
-    }
-    20%,
-    24%,
-    55% {
-      text-shadow: none;
-    }
-  }
-  /* animation: flickerIn 1s linear 0s 1 forwards; */
-
-  /* Keyframe animation for the slide down effect on page load. */
-  @keyframes slideDown {
-    0% {
-      margin-top: 0px;
-    }
-    100% {
-      opacity: 1;
-      margin-top: 45px;
-      padding: 10px;
-    }
-  }
-  /* animation: slideDown 1s linear 0s 1 forwards; */
-
-  /* Animation for neon light pulsate effect. */
-  @keyframes pulsate {
-    100% {
-      /* Larger blur radius */
-      text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #e6af2e,
-        0 0 80px #e6af2e, 0 0 90px #e6af2e, 0 0 100px #e6af2e, 0 0 150px #e6af2e;
-    }
-    0% {
-      /* A slightly smaller blur radius */
-      text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px #e6af2e,
-        0 0 73px #e6af2e, 0 0 80px #e6af2e, 0 0 94px #e6af2e, 0 0 140px #e6af2e;
-    }
-  }
-  /* pulsate 0.11s ease-in-out infinite alternate; */
 `;
 
 /** Header Exports */
