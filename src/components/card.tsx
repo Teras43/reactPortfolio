@@ -45,52 +45,50 @@ const Card = ({
 
   return (
     <CardDiv headerText={headerText}>
-      <BorderDiv>
-        <BackgroundDiv onClick={() => navSite(site)}>
-          <ImageDiv mobile={mobile}>
-            <ProjectImg
-              mobile={mobile}
-              src={image}
-              alt="Thumbnail for Project"
-            ></ProjectImg>
-          </ImageDiv>
-        </BackgroundDiv>
-        <TextDiv>
-          <TitleDiv>
-            <Text
-              fontSize={fontSizeTitle}
-              bold
-              link
-              mask={title}
-              color={"white"}
-              align={"center"}
-              hover
-              data-text={title}
-            >
-              {site}
-            </Text>
-          </TitleDiv>
-          <DescriptionDiv>
-            <Text
-              fontSize={fontSizeDesc}
-              underline={false}
-              mask={description}
-              color={"white"}
-              align={"center"}
-            >
-              {site}
-            </Text>
-          </DescriptionDiv>
-          <BtnDiv headerText={headerText}>
-            <a href={site} target="_blank" rel="noreferrer" id="navBtn">
-              <span>
-                {headerText === "My games" ? "Play Game!" : "Visit App!"}
-              </span>
-              <i></i>
-            </a>
-          </BtnDiv>
-        </TextDiv>
-      </BorderDiv>
+      <BackgroundDiv onClick={() => navSite(site)}>
+        <ImageDiv mobile={mobile}>
+          <ProjectImg
+            mobile={mobile}
+            src={image}
+            alt="Thumbnail for Project"
+          ></ProjectImg>
+        </ImageDiv>
+      </BackgroundDiv>
+      <TextDiv>
+        <TitleDiv>
+          <Text
+            fontSize={fontSizeTitle}
+            bold
+            link
+            mask={title}
+            color={"white"}
+            align={"center"}
+            hover
+            data-text={title}
+          >
+            {site}
+          </Text>
+        </TitleDiv>
+        <DescriptionDiv>
+          <Text
+            fontSize={fontSizeDesc}
+            underline={false}
+            mask={description}
+            color={"white"}
+            align={"center"}
+          >
+            {site}
+          </Text>
+        </DescriptionDiv>
+        <BtnDiv headerText={headerText}>
+          <a href={site} target="_blank" rel="noreferrer" id="navBtn">
+            <span>
+              {headerText === "My games" ? "Play Game!" : "Visit App!"}
+            </span>
+            <i></i>
+          </a>
+        </BtnDiv>
+      </TextDiv>
     </CardDiv>
   );
 };
@@ -116,17 +114,7 @@ const CardDiv = styled.div<{ headerText: string }>`
   align-items: center;
   justify-content: center;
   transition: 0.3s;
-`;
-
-const BorderDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 98%;
-  width: 98%;
-  border: 1px solid #a3a3a3;
-  border-radius: 5px;
-  margin: 8px;
+  padding: 30px 10px;
 
   @media (min-width: 800px) {
     flex-direction: row;

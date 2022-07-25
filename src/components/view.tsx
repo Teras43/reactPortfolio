@@ -29,9 +29,17 @@ const ViewStyle = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 
   @media screen and (max-width: 1200px) {
     align-items: center;
+  }
+
+  ::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
 `;
 
@@ -39,18 +47,9 @@ const BodyStyle = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 75px;
   padding-left: 30px;
   padding-right: 30px;
   z-index: 10;
-  overflow: scroll;
-  overflow-x: hidden;
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-
-  ::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
 
   @media screen and (max-width: 1200px) {
     height: auto;

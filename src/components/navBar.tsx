@@ -350,50 +350,5 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean }>`
   }
 `;
 
-// const NavBarItemStyle = styled.div<{
-//   isSelected: boolean;
-//   viewName: string;
-//   currentRoute: string;
-// }>`
-//   margin-right: 4px;
-//   padding-left: 18px;
-//   font-size: 20px;
-//   user-select: none;
-//   cursor: pointer;
-//   opacity: ${({ isSelected }) => (isSelected ? "1" : "0.5")};
-//   color: ${({ isSelected, viewName }) =>
-//     isSelected && viewName === "Games"
-//       ? "#FFF"
-//       : isSelected && viewName === "Webapps"
-//       ? "#FFE7AD"
-//       : isSelected && viewName === "Contact"
-//       ? "#FFC9C2"
-//       : "#FFF"};
-//   text-shadow: ${({ isSelected, viewName }) =>
-//     isSelected && viewName === "Games"
-//       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
-//     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 100px #1b356c`
-//       : isSelected && viewName === "Webapps"
-//       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
-//     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00`
-//       : isSelected && viewName === "Contact"
-//       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FF3A20,
-//     0 0 82px #FF3A20, 0 0 92px #FF3A20, 0 0 102px #FF3A20, 0 0 151px #FF3A20`
-//       : "none"};
-//   padding-right: 18px;
-
-//   @media (min-width: 460px) {
-//     font-size: 28px;
-//   }
-
-//   @media (min-width: 865px) {
-//     font-size: 32px;
-//   }
-
-//   @media (min-width: 1200px) {
-//     font-size: 42px;
-//   }
-// `;
-
 /** Navbar Exports */
 export default NavBar;
