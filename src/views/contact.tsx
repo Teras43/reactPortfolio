@@ -22,29 +22,27 @@ const Contact = ({ currentRoute }: Props) => {
     <View headerText="Lets get in touch">
       <BodyWrapper>
         <CardDiv>
-          <BorderDiv>
-            <ContactDiv>
-              <ContactCardSection
-                sectionTitle={"You can email me:"}
-                sectionText={"Brandcurtis43@gmail.com"}
-                textMask={"Brandcurtis43@gmail.com"}
-                textLink={"email"}
-              />
-              <ContactCardSection
-                sectionTitle={"Some socials:"}
-                imgPath={socialArray}
-                textLink={true}
-                sectionText={socialLinkArray}
-                textMask={socialMask}
-              />
-              <ContactCardSection
-                sectionTitle={"Github if you'd like:"}
-                sectionText={"https://github.com/Teras43"}
-                textMask={"Link to Github"}
-                textLink={true}
-              />
-            </ContactDiv>
-          </BorderDiv>
+          <ContactDiv>
+            <ContactCardSection
+              sectionTitle={"You can email me:"}
+              sectionText={"Brandcurtis43@gmail.com"}
+              textMask={"Brandcurtis43@gmail.com"}
+              textLink={"email"}
+            />
+            <ContactCardSection
+              sectionTitle={"Some socials:"}
+              imgPath={socialArray}
+              textLink={true}
+              sectionText={socialLinkArray}
+              textMask={socialMask}
+            />
+            <ContactCardSection
+              sectionTitle={"Github if you'd like:"}
+              sectionText={"https://github.com/Teras43"}
+              textMask={"Link to Github"}
+              textLink={true}
+            />
+          </ContactDiv>
         </CardDiv>
         <AttrDiv>
           {/* <div>
@@ -84,6 +82,7 @@ const BodyWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: 0;
 
   @keyframes FadeIn {
     0% {
@@ -93,7 +92,7 @@ const BodyWrapper = styled.div`
       opacity: 1;
     }
   }
-  animation: FadeIn 1s linear;
+  animation: FadeIn 1s linear forwards;
 `;
 
 const CardDiv = styled.div`
@@ -132,17 +131,6 @@ const CardDiv = styled.div`
     max-width: 1200px;
     height: 35em;
   }
-`;
-
-const BorderDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 95%;
-  border: 1px solid #a3a3a3;
-  border-radius: 5px;
-  margin: 8px;
 `;
 
 const ContactDiv = styled.div`
