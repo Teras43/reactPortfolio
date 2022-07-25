@@ -69,6 +69,7 @@ const BodyWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  opacity: 0;
 
   @keyframes FadeIn {
     0% {
@@ -78,7 +79,7 @@ const BodyWrapper = styled.div`
       opacity: 1;
     }
   }
-  animation: FadeIn 1s linear;
+  animation: FadeIn 1s linear forwards;
 `;
 
 const ProjectDiv = styled.div`
