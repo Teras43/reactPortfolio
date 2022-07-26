@@ -88,7 +88,6 @@ const ProjectDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 60px;
   opacity: 0;
   @keyframes fadeIn {
     0% {

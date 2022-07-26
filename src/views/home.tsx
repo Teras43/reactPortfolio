@@ -95,7 +95,6 @@ const ProjectDiv = styled.div`
   padding-bottom: 100px;
   margin: auto;
   opacity: 0;
-  margin-top: 70px;
 
   @keyframes fadeIn {
     0% {
