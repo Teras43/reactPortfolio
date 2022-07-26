@@ -73,6 +73,10 @@ const TextContainer = styled.div`
     }
   }
   animation: FadeIn 1s linear forwards;
+
+  @media screen and (max-width: 600px) {
+    height: 450px;
+  } ;
 `;
 
 const BackgroundTextContainer = styled.div<{

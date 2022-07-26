@@ -35,8 +35,8 @@ const Card = ({
     fontSizeTitle = 40;
     fontSizeDesc = 34;
   } else {
-    fontSizeTitle = 22;
-    fontSizeDesc = 20;
+    fontSizeTitle = 32;
+    fontSizeDesc = 28;
   }
   /** Function that simply opens the website of the project clicked. */
   const navSite = (site: any) => {
@@ -99,6 +99,7 @@ const CardDiv = styled.div<{ headerText: string }>`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  max-height: 400px;
   max-width: 1300px;
   margin-right: 15px;
   margin-left: 15px;
@@ -119,11 +120,15 @@ const CardDiv = styled.div<{ headerText: string }>`
   @media (min-width: 800px) {
     flex-direction: row;
   }
+
+  @media screen and (max-width: 799px) {
+    max-height: 600px;
+  }
 `;
 
 const BackgroundDiv = styled.div`
   width: 70%;
-  height: 175px;
+  height: 175x;
   margin-top: 15px;
   display: flex;
   background-color: rgba(0, 0, 0, 0.5);
@@ -149,20 +154,19 @@ const BackgroundDiv = styled.div`
 
 const ImageDiv = styled.div<{ mobile: boolean }>`
   width: ${({ mobile }) => (mobile ? "33%" : "100%")};
-  height: 175px;
+  height: 100%;
   object-fit: contain;
 
-  @media (min-width: 410px) {
-    height: 225px;
-  }
-
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 1100px) {
     width: ${({ mobile }) => (mobile ? "40%" : "100%")};
   }
 
-  @media (min-width: 800px) {
-    height: 100%;
+  @media screen and (max-width: 900px) {
     width: ${({ mobile }) => (mobile ? "50%" : "100%")};
+  }
+
+  @media screen and (max-width: 799px) {
+    width: ${({ mobile }) => (mobile ? "40%" : "100%")};
   }
 `;
 
