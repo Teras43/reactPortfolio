@@ -4,15 +4,15 @@ import styled from "styled-components";
 /** Prop typing for the Background Text Component. */
 type BkgdProps = {
   /** Prop that dictates whether to load the rest of the web page after the Enter Site button has been clicked. */
-  loadSite: any;
+  loadSite: boolean;
   /** The function that will set the state of the site to based off the previous loadSite prop. */
-  setSiteState: any;
+  setSiteState: (boolean: any) => void;
   /** The current view displayed on the app. */
-  currentView: any;
+  activePageIndex?: number | undefined;
 };
 
 /** Component that displays the neon text on the background image of the site. */
-const BkgdTxt = ({ setSiteState, currentView }: BkgdProps) => {
+const BkgdTxt = ({ setSiteState, activePageIndex }: BkgdProps) => {
   let isClicked = useRef(false);
 
   const EnterSiteFn = useCallback(() => {
@@ -23,22 +23,24 @@ const BkgdTxt = ({ setSiteState, currentView }: BkgdProps) => {
   return (
     <TextContainer>
       <BackgroundTextContainer
-        currentView={currentView}
+        activePageIndex={activePageIndex}
         isClicked={isClicked.current}
       >
         <WelcomeSmallTxt
-          currentView={currentView}
+          activePageIndex={activePageIndex}
           isClicked={isClicked.current}
         >
           Welcome to the website of
         </WelcomeSmallTxt>
-        <NameTxt currentView={currentView} isClicked={isClicked.current}>
+        <NameTxt
+          activePageIndex={activePageIndex}
+          isClicked={isClicked.current}
+        >
           Brandon Curtis
         </NameTxt>
       </BackgroundTextContainer>
       <BtnContainer>
         <EnterBtn
-          currentView={currentView}
           isClicked={isClicked.current}
           onClick={() => EnterSiteFn()}
           data-text="Enter"
@@ -63,6 +65,7 @@ const TextContainer = styled.div`
   font-weight: 400;
   transition: 1s;
   opacity: 0;
+  z-index: 8;
 
   @keyframes FadeIn {
     50% {
@@ -77,22 +80,22 @@ const TextContainer = styled.div`
 
 const BackgroundTextContainer = styled.div<{
   isClicked: boolean;
-  currentView: any;
+  activePageIndex: number | undefined;
 }>`
   border: ${({ isClicked }) =>
     isClicked ? `0.3rem solid rgba(255, 255, 255, 0.3)` : `0.3rem solid #fff`};
   border-radius: 2rem;
   padding: 0.7em;
-  box-shadow: ${({ currentView, isClicked }) =>
-    currentView === "Games"
+  box-shadow: ${({ activePageIndex, isClicked }) =>
+    activePageIndex === 1
       ? !isClicked
         ? `0 0 20px #fff`
         : "0 0 20px #9e9e9e"
-      : currentView === "Webapps"
+      : activePageIndex === 0
       ? !isClicked
         ? "0 0 20px #FBAF00"
         : "0 0 20px #a27100"
-      : currentView === "Contact"
+      : activePageIndex === 2
       ? !isClicked
         ? "0 0 20px #FF3A20"
         : "0 0 20px #932213"
@@ -100,20 +103,23 @@ const BackgroundTextContainer = styled.div<{
     0 0 0.8rem #1b356c, 0 0 2.8rem #1b356c, inset 0 0 1.3rem #1b356c;`};
 `;
 
-const WelcomeSmallTxt = styled.div<{ isClicked: boolean; currentView: any }>`
+const WelcomeSmallTxt = styled.div<{
+  isClicked: boolean;
+  activePageIndex: number | undefined;
+}>`
   opacity: ${({ isClicked }) => (isClicked ? 0.3 : 1)};
   font-family: "Dancing Script", cursive;
   font-size: 1.5em;
   color: #fff;
   margin-right: 35px;
-  text-shadow: ${({ currentView }) =>
-    currentView === "Webapps"
+  text-shadow: ${({ activePageIndex }) =>
+    activePageIndex === 1
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c;`
-      : currentView === "Resume"
+      : activePageIndex === 0
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00;`
-      : currentView === "Contact"
+      : activePageIndex === 2
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FF3A20,
     0 0 82px #FF3A20, 0 0 92px #FF3A20, 0 0 102px #FF3A20, 0 0 151px #FF3A20;`
       : `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
@@ -140,20 +146,23 @@ const WelcomeSmallTxt = styled.div<{ isClicked: boolean; currentView: any }>`
   }
 `;
 
-const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
+const NameTxt = styled.div<{
+  isClicked: boolean;
+  activePageIndex: number | undefined;
+}>`
   opacity: ${({ isClicked }) => (isClicked ? 0.65 : 1)};
   font-family: "Dancing Script", cursive;
   font-size: 4em;
   font-weight: 700;
   color: #fff;
-  text-shadow: ${({ currentView }) =>
-    currentView === "Games"
+  text-shadow: ${({ activePageIndex }) =>
+    activePageIndex === 1
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
     0 0 82px #1b356c, 0 0 92px #1b356c, 0 0 102px #1b356c, 0 0 151px #1b356c;`
-      : currentView === "Webapps"
+      : activePageIndex === 0
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FBAF00,
     0 0 82px #FBAF00, 0 0 92px #FBAF00, 0 0 102px #FBAF00, 0 0 151px #FBAF00;`
-      : currentView === "Contact"
+      : activePageIndex === 2
       ? `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #FF3A20,
     0 0 82px #FF3A20, 0 0 92px #FF3A20, 0 0 102px #FF3A20, 0 0 151px #FF3A20;`
       : `0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #1b356c,
@@ -223,7 +232,7 @@ const NameTxt = styled.div<{ isClicked: boolean; currentView: any }>`
     !isClicked ? `flicker 3s infinite 1.2s alternate;` : `none`};
 `;
 
-const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
+const EnterBtn = styled.button<{ isClicked: boolean }>`
   opacity: ${({ isClicked }) => (isClicked ? 0 : 1)};
   font-family: "Bebas Neue", cursive;
   cursor: pointer;

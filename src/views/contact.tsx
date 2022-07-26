@@ -4,12 +4,13 @@ import { ContactCardSection } from "../components";
 // import fbImg from "../assets/images/facebook.png";
 import liImg from "../assets/images/linkedin.png";
 
-type Props = {
-  currentRoute: string;
+type ContactProps = {
+  activePageIndex: number;
+  viewArray: string[];
 };
 
 /** The view component for the Contact page. */
-const Contact = ({ currentRoute }: Props) => {
+const Contact = ({ activePageIndex, viewArray }: ContactProps) => {
   let socialArray = [liImg];
   let socialLinkArray = [
     // "https://www.facebook.com/brandcurtis/",
@@ -19,7 +20,12 @@ const Contact = ({ currentRoute }: Props) => {
   let socialMask = ["LinkedIn"];
 
   return (
-    <View headerText="Lets get in touch">
+    <View
+      viewId={"Contact"}
+      activePageIndex={activePageIndex}
+      viewArray={viewArray}
+      headerText="Lets get in touch"
+    >
       <BodyWrapper>
         <CardDiv>
           <ContactDiv>

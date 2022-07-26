@@ -4,11 +4,11 @@ import styled from "styled-components";
 import wordle_thumbnail from "../assets/images/wordle_thumbnail.png";
 import redSwirl from "../assets/images/red-swirls.jpeg";
 import hangManImg from "../assets/images/javaScriptHangManImg.png";
-// import myResume from "../assets/pdf/CurtisBrandon_Resume_2021-11-11.pdf";
-// import { Document, Page, pdfjs } from "react-pdf";
 
-/** Global worker for the PDF viewer used for the Resume. */
-// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+type GamesProps = {
+  activePageIndex: number;
+  viewArray: string[];
+};
 
 /** Array of objects containing all the projects for this tab (Games). */
 const gameProjects = [
@@ -39,7 +39,7 @@ const gameProjects = [
 ];
 
 /** The view component for the Games tab. */
-const Games = () => {
+const Games = ({ activePageIndex, viewArray }: GamesProps) => {
   const gameProjectCards = gameProjects.map((project, index) => {
     return (
       <Card
@@ -55,7 +55,12 @@ const Games = () => {
   });
 
   return (
-    <View headerText="My games">
+    <View
+      viewId={"Games"}
+      activePageIndex={activePageIndex}
+      viewArray={viewArray}
+      headerText="My games"
+    >
       <BodyWrapper>
         <ProjectDiv>{gameProjectCards}</ProjectDiv>
       </BodyWrapper>

@@ -6,6 +6,11 @@ import ecommerceStoreImg from "../assets/images/reactECommerceStoreImg.png";
 import golfScorecardImg from "../assets/images/angularGolfScorecardImg.jpeg";
 import mdAutomotiveImg from "../assets/images/md-automotive-repair.jpeg";
 
+type WebappsProps = {
+  activePageIndex: number;
+  viewArray: string[];
+};
+
 /** Array of objects that holds data to be displayed in the card component. */
 const projects = [
   {
@@ -43,7 +48,8 @@ const projects = [
 ];
 
 /** The landing page view of the app. */
-const HomePage = () => {
+// { activePageIndex, viewName, viewArray }: WebappsProps
+const HomePage = ({ activePageIndex, viewArray }: WebappsProps) => {
   /** Variable that holds the project cards mapped to each project in the projects array. */
   const allProjects = projects.map((project, index) => {
     return (
@@ -60,7 +66,12 @@ const HomePage = () => {
   });
 
   return (
-    <View headerText="My work">
+    <View
+      viewId={"Webapps"}
+      activePageIndex={activePageIndex}
+      viewArray={viewArray}
+      headerText="My work"
+    >
       <BodyWrapper>
         <ProjectDiv>{allProjects}</ProjectDiv>
       </BodyWrapper>

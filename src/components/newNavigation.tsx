@@ -1,37 +1,36 @@
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode, useState, useCallback } from "react";
 import styled from "styled-components";
 import * as Views from "../views";
+import { Games, Webapps, Contact } from "../views";
+import { BkgdTxt } from "./";
 import wallBlueImg from "../../src/assets/images/dark_blue_wall.png";
 import wallYellowImg from "../../src/assets/images/dark_yellow_wall.png";
 import wallRedImg from "../../src/assets/images/dark_red_wall.png";
-import { BkgdTxt } from "./";
 
-/** Navbar Types */
-type NavBarItemProps = {
-  /** Name of a view as a string. */
-  viewName: string;
-  /** Function that runs to set the current state of the view. */
-  onRouteSelect: (viewName: string) => void;
-  /** The boolean passed in telling the component whether or not the current route displayed is the 'selected' route / view, or currently active route / view. */
-  isSelected: boolean;
-  /** String of the currently selected route. */
-  currentRoute: string;
+// "#3e3f46"
+
+/** Order of pages. */
+const NavOrder: Record<string, number> = {
+  Webapps: 0,
+  Games: 1,
+  Contact: 2,
 };
 
-// type GenericProps = {
-//   currentRoute?: string;
-// };
-
-/** Navbar - Controls displaying of the views and navigation for each view. */
-const NavBar = () => {
+const Navigation = () => {
   /** State that tells the component whether the Enter Site button has been clicked and the page needs to fully render. */
   const [loadSite, setLoadSite] = useState<boolean>(false);
-  /** The record that holds the current view to display and set the header, pulled from the Views folder as a ReactNode.  */
+  const [activePageIndex, setActivePageIndex] = useState<number>(1);
   const ViewType = Views as Record<string, (viewName: any) => ReactNode>;
-  /** The state for the routing used in the webapp. Initialized at "Games" route. */
-  const [currentRoute, setCurrentRoute] = useState<string>("Games");
-  /** Variable that holds the object with names of each view to set up a route to. */
-  const viewNames = Object.keys(Views);
+
+  const viewArray = Object.keys(ViewType).sort(
+    (a, b) => NavOrder[a] - NavOrder[b]
+  );
+
+  // const renderViews = useCallback(() => {
+  //   viewArray.map((viewName) =>
+  //     ViewType[viewName]({ activePageIndex, viewName, viewArray })
+  //   );
+  // }, [activePageIndex, ViewType, viewArray]);
 
   /** The function that checks the state to see if the button has been clicked to render the rest of the page. */
   const setSiteState = useCallback((boolean) => {
@@ -39,81 +38,57 @@ const NavBar = () => {
     return;
   }, []);
 
-  /** The function that accesses the Views object (imported) and maps item styling and properties on each view, to display in the Navbar in the view. */
   const getRoutes = useCallback(() => {
-    /** The map on the object with each view name. */
-    return viewNames.map((viewName, index) => (
-      <NavBarItem
-        key={index}
-        onRouteSelect={setCurrentRoute}
-        viewName={viewName}
-        isSelected={currentRoute === viewName}
-        currentRoute={currentRoute}
-      ></NavBarItem>
-    ));
-  }, [currentRoute, viewNames]);
+    const allRoutes = viewArray.map((viewName) => {
+      return (
+        <NavBarListItemStyle
+          key={Math.random()}
+          activeIndex={activePageIndex}
+          viewName={viewName}
+          isSelected={viewArray.indexOf(viewName) === activePageIndex}
+          onClick={() => setActivePageIndex(viewArray.indexOf(viewName))}
+        >
+          <NavBarItemStyle
+            isSelected={viewArray.indexOf(viewName) === activePageIndex}
+          >
+            {viewName}
+          </NavBarItemStyle>
+        </NavBarListItemStyle>
+      );
+    });
+
+    return allRoutes;
+  }, [activePageIndex, viewArray]);
 
   return (
-    <PageWrapper viewName={currentRoute}>
+    <PageWrapper activeIndex={activePageIndex}>
       <NavContainer>
         {loadSite && <NavBarStyle>{getRoutes()}</NavBarStyle>}
       </NavContainer>
-      {loadSite && ViewType[currentRoute]?.({ currentRoute })}
+      {/* {loadSite && renderViews()} */}
+      {loadSite && Webapps({ activePageIndex, viewArray })}
+      {loadSite && Games({ activePageIndex, viewArray })}
+      {loadSite && Contact({ activePageIndex, viewArray })}
       <BkgdTxt
         loadSite={loadSite}
         setSiteState={setSiteState}
-        // currentView={currentRoute}
+        activePageIndex={activePageIndex}
       />
     </PageWrapper>
   );
 };
 
-/** Navbar Item component that takes the view(route) names and changes the displayed name to be a capitalized version of the view name. It applies styling and attributes for selection and routing as well. */
-const NavBarItem = ({
-  viewName,
-  currentRoute,
-  onRouteSelect,
-  isSelected,
-}: NavBarItemProps) => {
-  const formatRouteName = useCallback(
-    () => viewName.replace(/([A-Z]+)/g, " $1"),
-    [viewName]
-  );
-
-  return (
-    <NavBarListItemStyle
-      viewName={viewName}
-      isSelected={isSelected}
-      currentRoute={currentRoute}
-    >
-      <NavBarItemStyle
-        isSelected={isSelected}
-        onClick={() => onRouteSelect(viewName)}
-      >
-        {formatRouteName()}
-      </NavBarItemStyle>
-    </NavBarListItemStyle>
-  );
-};
-
-/** Accessability settings for animation. */
-// @media screen and (prefers-reduced-motion) {
-//   *element w/ animation here* {
-//     animation: none;
-//   }
-// }
-
 /** Navbar Styles */
-const PageWrapper = styled.div<{ viewName: string }>`
+const PageWrapper = styled.div<{ activeIndex: number }>`
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-image: ${({ viewName }) =>
-    viewName === "Games"
+  background-image: ${({ activeIndex }) =>
+    activeIndex === 1
       ? `url(${wallBlueImg})`
-      : viewName === "Webapps"
+      : activeIndex === 0
       ? `url(${wallYellowImg})`
-      : viewName === "Contact"
+      : activeIndex === 2
       ? `url(${wallRedImg})`
       : `url(${wallBlueImg})`};
   background-color: #010a01;
@@ -157,23 +132,23 @@ const NavBarStyle = styled.div`
 `;
 
 const NavBarListItemStyle = styled.div<{
+  activeIndex: number;
   viewName: string;
   isSelected: boolean;
-  currentRoute: string;
 }>`
   position: relative;
   list-style: none;
   width: 200px;
-  background: ${({ isSelected, viewName, currentRoute }) =>
+  background: ${({ isSelected, viewName }) =>
     isSelected
       ? viewName === "Games"
         ? "#1b345c"
         : viewName === "Webapps"
         ? "#FBAF00"
         : "#FF3A20"
-      : currentRoute === "Games"
+      : viewName === "Games"
       ? "#26293d"
-      : currentRoute === "Webapps"
+      : viewName === "Webapps"
       ? "#3d3c26"
       : "#3d2626"};
   padding-left: 10px;
@@ -265,7 +240,11 @@ const NavBarListItemStyle = styled.div<{
           : viewName === "Webapps"
           ? "#FBAF00"
           : "#FF3A20"
-        : "#3e3f46"};
+        : viewName === "Games"
+        ? "#26293d"
+        : viewName === "Webapps"
+        ? "#3d3c26"
+        : "#3d2626"};
 
     @media screen and (max-width: 1200px) {
       position: static;
@@ -292,7 +271,11 @@ const NavBarListItemStyle = styled.div<{
           : viewName === "Webapps"
           ? "#FBAF00"
           : "#FF3A20"
-        : "#3e3f46"};
+        : viewName === "Games"
+        ? "#26293d"
+        : viewName === "Webapps"
+        ? "#3d3c26"
+        : "#3d2626"};
 
     @media screen and (max-width: 1200px) {
       position: static;
@@ -328,5 +311,5 @@ const NavBarItemStyle = styled.div<{ isSelected: boolean }>`
   }
 `;
 
-/** Navbar Exports */
-export default NavBar;
+/** Exports */
+export default Navigation;

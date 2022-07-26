@@ -10,12 +10,28 @@ type Props = {
   center?: boolean;
   /** Typing for the node which holds the children (the body of the page). */
   children?: ReactNode;
+  /** Id as the name of the view. */
+  viewId: string | undefined;
+  /** Current page index that is active in the display. */
+  activePageIndex: number;
+  /** The array that holds the positioning of all the views. */
+  viewArray: string[];
 };
 
 /** Component that wraps and displays the main body of the view, and displays the banner for which view is currently routed to. */
-const View = ({ headerText, children }: Props) => {
+const View = ({
+  headerText,
+  children,
+  viewId,
+  activePageIndex,
+  viewArray,
+}: Props) => {
   return (
-    <ViewStyle>
+    <ViewStyle
+      id={viewId}
+      viewArray={viewArray}
+      activePageIndex={activePageIndex}
+    >
       <HeaderDiv>{headerText && <Header text={headerText} />}</HeaderDiv>
       <BodyStyle>{children}</BodyStyle>
     </ViewStyle>
@@ -23,12 +39,22 @@ const View = ({ headerText, children }: Props) => {
 };
 
 /** View Styles */
-const ViewStyle = styled.div`
+const ViewStyle = styled.div<{
+  viewArray: string[];
+  activePageIndex: number;
+  id: string | undefined;
+}>`
+  position: fixed;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   margin: auto;
+  opacity: ${({ viewArray, activePageIndex, id }) =>
+    id === viewArray[activePageIndex] ? 1 : 0};
+  display: ${({ viewArray, activePageIndex, id }) =>
+    id === viewArray[activePageIndex] ? "" : "none"};
+  z-index: 50;
   overflow: scroll;
   overflow-x: hidden;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
