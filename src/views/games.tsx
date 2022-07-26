@@ -8,6 +8,7 @@ import hangManImg from "../assets/images/javaScriptHangManImg.png";
 type GamesProps = {
   activePageIndex: number;
   viewArray: string[];
+  fadeOut: boolean;
 };
 
 /** Array of objects containing all the projects for this tab (Games). */
@@ -39,7 +40,7 @@ const gameProjects = [
 ];
 
 /** The view component for the Games tab. */
-const Games = ({ activePageIndex, viewArray }: GamesProps) => {
+const Games = ({ activePageIndex, viewArray, fadeOut }: GamesProps) => {
   const gameProjectCards = gameProjects.map((project, index) => {
     return (
       <Card
@@ -61,15 +62,32 @@ const Games = ({ activePageIndex, viewArray }: GamesProps) => {
       viewArray={viewArray}
       headerText="My games"
     >
-      <BodyWrapper>
-        <ProjectDiv>{gameProjectCards}</ProjectDiv>
+      <BodyWrapper
+        fadeOut={fadeOut}
+        currentView={"Games"}
+        activePageIndex={activePageIndex}
+        viewArray={viewArray}
+      >
+        <ProjectDiv
+          fadeOut={fadeOut}
+          currentView={"Games"}
+          activePageIndex={activePageIndex}
+          viewArray={viewArray}
+        >
+          {gameProjectCards}
+        </ProjectDiv>
       </BodyWrapper>
     </View>
   );
 };
 
 /** Game View Styles */
-const BodyWrapper = styled.div`
+const BodyWrapper = styled.div<{
+  fadeOut: boolean;
+  currentView: string;
+  activePageIndex: number;
+  viewArray: string[];
+}>`
   height: 100%;
   width: 100%;
   display: flex;
@@ -84,10 +102,28 @@ const BodyWrapper = styled.div`
       opacity: 1;
     }
   }
-  animation: FadeIn 1s linear forwards;
+
+  @keyframes FadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  animation: ${({ fadeOut, currentView, activePageIndex, viewArray }) =>
+    currentView === viewArray[activePageIndex] && fadeOut
+      ? "FadeOut 0.5s linear forwards"
+      : "FadeIn 0.5s linear forwards"};
 `;
 
-const ProjectDiv = styled.div`
+const ProjectDiv = styled.div<{
+  fadeOut: boolean;
+  currentView: string;
+  activePageIndex: number;
+  viewArray: string[];
+}>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,7 +131,9 @@ const ProjectDiv = styled.div`
   margin: auto;
   margin-top: 60px;
   opacity: 0;
-  @keyframes fadeIn {
+  transition: 0.5s;
+
+  @keyframes FadeIn {
     0% {
       opacity: 0;
     }
@@ -103,7 +141,20 @@ const ProjectDiv = styled.div`
       opacity: 1;
     }
   }
-  animation: fadeIn 1s linear 0.2s 1 forwards;
+
+  @keyframes FadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  animation: ${({ fadeOut, currentView, activePageIndex, viewArray }) =>
+    currentView === viewArray[activePageIndex] && fadeOut
+      ? "FadeOut 0.5s linear forwards"
+      : "FadeIn 0.5s linear forwards"};
 
   @media screen and (max-width: 799px) {
     margin-top: 10;

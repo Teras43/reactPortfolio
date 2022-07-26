@@ -7,10 +7,11 @@ import liImg from "../assets/images/linkedin.png";
 type ContactProps = {
   activePageIndex: number;
   viewArray: string[];
+  fadeOut: boolean;
 };
 
 /** The view component for the Contact page. */
-const Contact = ({ activePageIndex, viewArray }: ContactProps) => {
+const Contact = ({ activePageIndex, viewArray, fadeOut }: ContactProps) => {
   let socialArray = [liImg];
   let socialLinkArray = [
     // "https://www.facebook.com/brandcurtis/",

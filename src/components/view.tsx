@@ -52,6 +52,7 @@ const ViewStyle = styled.div<{
   margin: auto;
   opacity: ${({ viewArray, activePageIndex, id }) =>
     id === viewArray[activePageIndex] ? 1 : 0};
+  transition: 0.5s;
   display: ${({ viewArray, activePageIndex, id }) =>
     id === viewArray[activePageIndex] ? "" : "none"};
   z-index: 50;

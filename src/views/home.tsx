@@ -9,6 +9,7 @@ import mdAutomotiveImg from "../assets/images/md-automotive-repair.jpeg";
 type WebappsProps = {
   activePageIndex: number;
   viewArray: string[];
+  fadeOut: boolean;
 };
 
 /** Array of objects that holds data to be displayed in the card component. */
@@ -49,7 +50,7 @@ const projects = [
 
 /** The landing page view of the app. */
 // { activePageIndex, viewName, viewArray }: WebappsProps
-const HomePage = ({ activePageIndex, viewArray }: WebappsProps) => {
+const HomePage = ({ activePageIndex, viewArray, fadeOut }: WebappsProps) => {
   /** Variable that holds the project cards mapped to each project in the projects array. */
   const allProjects = projects.map((project, index) => {
     return (

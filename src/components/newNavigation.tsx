@@ -20,17 +20,12 @@ const Navigation = () => {
   /** State that tells the component whether the Enter Site button has been clicked and the page needs to fully render. */
   const [loadSite, setLoadSite] = useState<boolean>(false);
   const [activePageIndex, setActivePageIndex] = useState<number>(1);
+  const [fadeOut, setFadeOut] = useState<boolean>(false);
   const ViewType = Views as Record<string, (viewName: any) => ReactNode>;
 
   const viewArray = Object.keys(ViewType).sort(
     (a, b) => NavOrder[a] - NavOrder[b]
   );
-
-  // const renderViews = useCallback(() => {
-  //   viewArray.map((viewName) =>
-  //     ViewType[viewName]({ activePageIndex, viewName, viewArray })
-  //   );
-  // }, [activePageIndex, ViewType, viewArray]);
 
   /** The function that checks the state to see if the button has been clicked to render the rest of the page. */
   const setSiteState = useCallback((boolean) => {
@@ -45,8 +40,15 @@ const Navigation = () => {
           key={Math.random()}
           activeIndex={activePageIndex}
           viewName={viewName}
+          viewArray={viewArray}
           isSelected={viewArray.indexOf(viewName) === activePageIndex}
-          onClick={() => setActivePageIndex(viewArray.indexOf(viewName))}
+          onClick={() => {
+            setFadeOut(true);
+            setTimeout(() => {
+              setFadeOut(false);
+              setActivePageIndex(viewArray.indexOf(viewName));
+            }, 500);
+          }}
         >
           <NavBarItemStyle
             isSelected={viewArray.indexOf(viewName) === activePageIndex}
@@ -65,10 +67,9 @@ const Navigation = () => {
       <NavContainer>
         {loadSite && <NavBarStyle>{getRoutes()}</NavBarStyle>}
       </NavContainer>
-      {/* {loadSite && renderViews()} */}
-      {loadSite && Webapps({ activePageIndex, viewArray })}
-      {loadSite && Games({ activePageIndex, viewArray })}
-      {loadSite && Contact({ activePageIndex, viewArray })}
+      {loadSite && Webapps({ activePageIndex, viewArray, fadeOut })}
+      {loadSite && Games({ activePageIndex, viewArray, fadeOut })}
+      {loadSite && Contact({ activePageIndex, viewArray, fadeOut })}
       <BkgdTxt
         loadSite={loadSite}
         setSiteState={setSiteState}
@@ -135,6 +136,7 @@ const NavBarListItemStyle = styled.div<{
   activeIndex: number;
   viewName: string;
   isSelected: boolean;
+  viewArray: string[];
 }>`
   position: relative;
   list-style: none;
