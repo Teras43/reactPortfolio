@@ -5,6 +5,7 @@ import wallBlueImg from "../../src/assets/images/dark_blue_wall.png";
 import wallYellowImg from "../../src/assets/images/dark_yellow_wall.png";
 import wallRedImg from "../../src/assets/images/dark_red_wall.png";
 import { BkgdTxt } from "./";
+import { Page } from "react-pdf";
 
 /** Navbar Types */
 type NavBarItemProps = {
@@ -35,6 +36,10 @@ const NavBar = () => {
   const [currentRoute, setCurrentRoute] = useState<string>("Games");
   /** Variable that holds the object with names of each view to set up a route to. */
   const viewNames = Object.keys(Views);
+  /** Variable that keeps track of current screen width. */
+  let screenWidth;
+
+  window.innerHeight >= 800 ? (screenWidth = true) : (screenWidth = false);
 
   /** The function that checks the state to see if the button has been clicked to render the rest of the page. */
   const setSiteState = useCallback((boolean) => {
@@ -55,6 +60,14 @@ const NavBar = () => {
       ></NavBarItem>
     ));
   }, [currentRoute, viewNames]);
+
+  // if (screenWidth) {
+  //   return (
+  //     <div>
+  //       <div></div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <PageWrapper viewName={currentRoute}>
@@ -90,7 +103,6 @@ const NavBarItem = ({
       currentRoute={currentRoute}
     >
       <NavBarItemStyle
-        // currentRoute={currentRoute}
         isSelected={isSelected}
         onClick={() => onRouteSelect(viewName)}
       >
@@ -159,24 +171,6 @@ const NavBarStyle = styled.div`
     width: 100%;
   }
 `;
-
-// const NavBarStyle = styled.div`
-//   width: 100%;
-//   max-width: 1275px;
-//   height: 70px;
-//   position: fixed;
-//   font-size: 16px;
-//   background: none;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
-//   text-decoration: none;
-//   z-index: 20;
-
-//   @media (min-width: 1275px) {
-//     margin: auto;
-//   }
-// `;
 
 const NavBarListItemStyle = styled.div<{
   viewName: string;
