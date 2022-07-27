@@ -160,24 +160,6 @@ const NavBarStyle = styled.div`
   }
 `;
 
-// const NavBarStyle = styled.div`
-//   width: 100%;
-//   max-width: 1275px;
-//   height: 70px;
-//   position: fixed;
-//   font-size: 16px;
-//   background: none;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
-//   text-decoration: none;
-//   z-index: 20;
-
-//   @media (min-width: 1275px) {
-//     margin: auto;
-//   }
-// `;
-
 const NavBarListItemStyle = styled.div<{
   viewName: string;
   isSelected: boolean;
