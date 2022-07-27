@@ -262,6 +262,11 @@ const EnterBtn = styled.button<{ isClicked: boolean; currentView: any }>`
     z-index: -1;
     color: #fff;
     filter: blur(15px);
+
+    @media (max-width: 800px) {
+      padding: 0;
+      margin-left: 50px;
+    }
   }
 
   @media (min-width: 700px) {

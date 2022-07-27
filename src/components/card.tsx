@@ -158,10 +158,6 @@ const ImageDiv = styled.div<{ mobile: boolean }>`
   object-fit: contain;
 
   @media screen and (max-width: 1100px) {
-    width: ${({ mobile }) => (mobile ? "40%" : "100%")};
-  }
-
-  @media screen and (max-width: 900px) {
     width: ${({ mobile }) => (mobile ? "50%" : "100%")};
   }
 
